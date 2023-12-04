@@ -1,0 +1,320 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 100;
+  font-display: swap;
+  src: local("Pretendard Thin"),
+    url("/fonts/Pretendard-Thin.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 200;
+  font-display: swap;
+  src: local("Pretendard ExtraLight"),
+    url("/fonts/Pretendard-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: local("Pretendard Light"),
+    url("/fonts/Pretendard-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"),
+    url("/fonts/Pretendard-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"),
+    url("/fonts/Pretendard-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"),
+    url("/fonts/Pretendard-SemiBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard Bold"),
+    url("/fonts/Pretendard-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 800;
+  font-display: swap;
+  src: local("Pretendard ExtraBold"),
+    url("/fonts/Pretendard-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 900;
+  font-display: swap;
+  src: local("Pretendard Black"),
+    url("/fonts/Pretendard-Black.woff") format("woff");
+}
+
+:root {
+  /* brand colors */
+  /* blue */
+  --pale-blue-100: 204 229 255 /* #CCE5FF */;
+  --pale-blue-200: 184 218 255 /* #B8DAFF */;
+
+  --sky-blue-200: 78 165 251 /* #4EA5FB */;
+
+  --vivid-blue-100: 0 88 255 /* #0058FF */;
+  --vivid-blue-200: 48 74 214 /* #304AD6 */;
+  --vivid-blue-300: 58 60 255 /* #3A3CFF */;
+
+  --deep-blue-50: 115 155 236 /* #739BEC */;
+  --deep-blue-100: 78 133 255 /* #4E85FF */;
+  --deep-blue-200: 78 114 255 /* #4E72FF */;
+  --deep-blue-300: 58 98 255 /* #3A62FF */;
+  --deep-blue-500: 55 96 255 /* #3760FF */;
+  --deep-blue-700: 60 93 225 /* #3C5DE1 */;
+  --deep-blue-800: 49 89 223 /* #3159DF */;
+  --deep-blue-900: 46 83 218 /* #2E53DA */;
+
+  --dim-blue-05: 154 174 249 /* #9AAEF9 */;
+  --dim-blue-10: 130 156 255 /* #829CFF */;
+  --dim-blue-15: 139 155 213 /* #8B9BD5 */;
+  --dim-blue-20: 117 142 223 /* #758EDF */;
+  --dim-blue-50: 98 129 253 /* #6281FD */;
+  --dim-blue-200: 86 118 235 /* #5676EB */;
+  --dim-blue-400: 74 102 210 /* #4A66D2 */;
+  --dim-blue-700: 0 64 133 /* #004085 */;
+  --dim-blue-800: 17 44 114 /* #112C72 */;
+  --dim-blue-900: 28 41 90 /* #1C295A */;
+
+  /* seaform */
+  --seaform-100: 229 248 247 /* #E5F8F7 */;
+  --seaform-200: 221 247 248 /* #DDF7F8 */;
+  --seaform-400: 87 212 209 /* #57D4D1 */;
+  --seaform-500: 35 190 186 /* #23BEBA */;
+  --seaform-600: 0 154 144 /* #009A90 */;
+
+  /* generic colors */
+  /* white scale */
+  --white-1: 248 250 255 /* #F8FAFF */;
+  --white-3: 246 249 254 /* #F6F9FE */;
+  --white-4: 250 251 253 /* #FAFBFD */;
+  --white-5: 248 250 253 /* #F8FAFD */;
+  --white-6: 244 246 250 /* #F4F6FA */;
+  --white-7: 241 244 252 /* #F1F4FC */;
+  --white-8: 240 243 248 /* #F0F3F8 */;
+  --white-9: 232 238 253 /* #E8EEFD */;
+  --white-10: 236 244 255 /* #ECF4FF */;
+  --white-13: 234 237 247 /* #EAEDF7 */;
+  --white-15: 230 233 244 /* #E6E9F4 */;
+  --white-16: 236 239 255 /* #ECEFFF */;
+
+  /* gray scale */
+  --cool-gray-6: 220 225 245 /* #DCE1F5 */;
+  --cool-gray-7: 217 221 235 /* #D9DDEB */;
+  --cool-gray-8: 203 212 235 /* #CBD4EB */;
+  --cool-gray-9: 192 206 225 /* #C0CEE1 */;
+  --cool-gray-10: 195 204 226 /* #C3CCE2 */;
+  --cool-gray-11: 193 199 226 /* #C1C7E2 */;
+  --cool-gray-12: 191 198 223 /* #BFC6DF */;
+  --cool-gray-13: 188 192 217 /* #BCC0D9 */;
+
+  --neutral-gray-4: 232 232 234 /* #E8E8EA */;
+  --neutral-gray-5: 230 230 230 /* #E6E6E6 */;
+
+  --dark-gray-10: 160 180 206 /* #A0B4CE */;
+  --dark-gray-30: 162 168 187 /* #A2A8BB */;
+  --dark-gray-50: 143 155 183 /* #8F9BB7 */;
+  --dark-gray-70: 138 146 172 /* #8A92AC */;
+  --dark-gray-100: 128 142 168 /* #808EA8 */;
+  --dark-gray-150: 126 132 163 /* #7E84A3 */;
+  --dark-gray-200: 121 133 159 /* #79859F */;
+  --dark-gray-300: 115 130 153 /* #738299 */;
+  --dark-gray-600: 91 101 130 /* #5B6582 */;
+  --dark-gray-700: 73 84 116 /* #495474 */;
+  --dark-gray-750: 66 77 109 /* #424D6D */;
+  --dark-gray-800: 63 65 71 /* #3F4147 */;
+
+  --black-400: 55 55 65 /* #373741 */;
+  --black-500: 39 40 41 /* #272829 */;
+  --black-800: 26 29 49 /* #1A1D31 */;
+  --black-900: 19 21 35 /* #131523 */;
+  /* red */
+  --red-10: 255 238 241 /* #FFEEF1 */;
+  --red-20: 250 213 212 /* #FAD5D4 */;
+  --red-25: 248 215 218 /* #F8D7DA */;
+  --red-30: 245 198 203 /* #F5C6CB */;
+  --red-200: 255 87 121 /* #FF5779 */;
+  --red-300: 240 20 47 /* #F0142F */;
+  --red-400: 235 58 51 /* #EB3A33 */;
+  --red-500: 213 54 74 /* #D5364A */;
+  --red-800: 114 28 36 /* #721C24 */;
+  /* orange */
+  --orange-50: 252 227 205 /* #FCE3CD */;
+  --orange-100: 255 157 72 /* #FF9D48 */;
+  --orange-200: 246 116 27 /* #F6741B */;
+
+  /* 시험 운영 */
+  --ColorBtn0BG: #c0cee1;
+  --ColorBtn0Text: #ffffff;
+  --ColorBtn1BG: #ede9ff;
+  --ColorBtn1Text: #8b78df;
+  --ColorBtn2BG: #eafae9;
+  --ColorBtn2Text: #56bf48;
+  --ColorBtn3BG: #dde6fe;
+  --ColorBtn3Text: #5c70cf;
+}
+
+/* DARK theme */
+/* :root.dark {} */
+
+@layer base {
+  html {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+      Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", sans-serif;
+    perspective: none;
+    @apply transform-none;
+  }
+
+  body {
+    /* Chromium 텍스트 흐림 방지 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    @apply m-auto max-w-[1920px] max-h-[1080px] overflow-y-hidden;
+  }
+
+  * {
+    /* moz */
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--white-15));
+  }
+  /* chrome */
+  *::-webkit-scrollbar {
+    @apply w-[4px] h-[4px] appearance-none;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply bg-whity-15 rounded-full;
+  }
+
+  li {
+    @apply list-none;
+  }
+
+  div {
+    @apply max-w-[initial];
+  }
+
+  /* 테이블 */
+
+  table {
+    @apply table-fixed break-all text-sm h-full;
+  }
+
+  tbody {
+    @apply h-fit;
+  }
+
+  th {
+    @apply font-medium;
+  }
+
+  td,
+  th {
+    @apply h-[calc(1em+40px)] text-center;
+  }
+
+  td > * {
+    @apply block w-full overflow-hidden whitespace-nowrap text-ellipsis break-all;
+  }
+
+  /* 비디오 플레이어 */
+  /* https://codepen.io/noahblon/pen/OyajvN */
+
+  video {
+    @apply object-fill;
+  }
+
+  input[type="range"] {
+    @apply w-full appearance-none h-[6px] rounded-full cursor-pointer focus:outline-none bg-transparent;
+  }
+
+  input[type="range"].thumb::-webkit-slider-runnable-track,
+  input[type="range"].thumb::-moz-range-track {
+    @apply bg-transparent h-[6px];
+  }
+  input[type="range"].track {
+    @apply overflow-hidden;
+  }
+
+  input[type="range"].track::-webkit-slider-runnable-track,
+  input[type="range"].track::-moz-range-track {
+    @apply bg-whity-15 h-[6px];
+  }
+
+  input[type="range"].thumb::-webkit-slider-thumb,
+  input[type="range"].thumb::-moz-range-thumb {
+    -webkit-appearance: none;
+    @apply cursor-pointer rounded-full bg-white border-[6px] box-border border-brand-deep-300 w-[18px] h-[18px];
+  }
+
+  input[type="range"].track::-webkit-slider-thumb,
+  input[type="range"].track::-moz-range-thumb {
+    @apply shadow-VideoViewPageVideoControlLowerTrackShadow w-0;
+  }
+
+  input[type="text"]:focus {
+    @apply outline-none;
+  }
+
+  /* number 타입 input */
+  /* https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    /* Chrome, Safari, Edge, Opera */
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    /* Firefox */
+    -moz-appearance: textfield;
+  }
+
+  textarea {
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+  }
+  textarea:not(.input-outlined) {
+    border: none;
+  }
+  textarea:focus {
+    outline: none;
+  }
+}
