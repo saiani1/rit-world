@@ -1,1 +1,1 @@
-# Rit's World!
+# RITWORLD
