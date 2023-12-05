@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import App from "./App";
-import LoginScreen from "./routes/login/LoginScreen";
+// import LoginScreen from "./routes/login/LoginScreen";
+import HomeScreen from "./routes/home/HomeScreen";
 
 const router = createBrowserRouter([
   {
@@ -12,11 +13,21 @@ const router = createBrowserRouter([
     element: <App />,
     // loader: titleLoader,
     children: [
+      // {
+      //   path: "/login",
+      //   element: (
+      //     <Suspense>
+      //       <LoginScreen />
+      //     </Suspense>
+      //   ),
+      //   // loader: mainLoader,
+      //   // errorElement: <CrashErrorScreen />,
+      // },
       {
-        path: "/login",
+        path: "/home",
         element: (
           <Suspense>
-            <LoginScreen />
+            <HomeScreen />
           </Suspense>
         ),
         // loader: mainLoader,
