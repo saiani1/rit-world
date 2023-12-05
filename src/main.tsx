@@ -1,10 +1,32 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import './index.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import "./index.css";
+import App from "./App";
+import LoginScreen from "./routes/login/LoginScreen";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    // loader: titleLoader,
+    children: [
+      {
+        path: "/login",
+        element: (
+          <Suspense>
+            <LoginScreen />
+          </Suspense>
+        ),
+        // loader: mainLoader,
+        // errorElement: <CrashErrorScreen />,
+      },
+    ],
+  },
+]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>
 );
