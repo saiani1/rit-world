@@ -2,15 +2,15 @@ import logo from "../../assets/logo.svg";
 
 const LoginScreen = () => {
   return (
-    <form className="flex justify-center items-center bg-slate-600">
-      <h1>
+    <form className="flex flex-col justify-center items-center w-96 h-96 rounded-full bg-white">
+      <h1 className="w-52 mb-8">
         <img src={logo} alt="logo" />
       </h1>
-      <input type="email" placeholder="아이디(이메일)" />
-      <input type="password" placeholder="비밀번호" />
-      <button type="submit">로그인</button>
-      <div>
-        <button type="button">아이디/비밀번호 찾기</button>
+      <input type="email" placeholder="아이디(이메일)" className="w-64 px-5 py-1.5 mb-2.5 border rounded-full border-slate-300 placeholder:text-xs" />
+      <input type="password" placeholder="비밀번호" className="w-64 px-5 py-1.5 border rounded-full border-slate-300 placeholder:text-xs" />
+      <button type="submit" className="w-64 py-1.5 mt-5 bg-gray-700 text-white rounded-full ">로그인</button>
+      <div className="flex justify-between w-48 mt-5 text-xs text-gray-400">
+        <button type="button" className="relative after:absolute after:content-[''] after:w-px after:h-2.5 after:top-1 after:left-32 after:bg-gray-300">아이디/비밀번호 찾기</button>
         <button type="button">회원가입</button>
       </div>
     </form>
