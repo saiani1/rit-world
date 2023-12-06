@@ -3,7 +3,7 @@ import { BiSolidDownArrow } from "react-icons/bi";
 
 const TodayFeelingDropdown = () => {
   const [isClick, setIsClick] = useState(false);
-  const [clickedFeeling, setClickedFeeling] = useState("행복");
+  const [clickedFeeling, setClickedFeeling] = useState("❤️사랑");
 
   const handleClick = () => {
     setIsClick((prev) => !prev);
@@ -35,6 +35,11 @@ const TodayFeelingDropdown = () => {
           className="absolute left-0.5 w-56 border rounded-md text-center bg-white"
           onClick={handleClickFeeling}
         >
+          <li className="border-b border-dashed">
+            <button className="p-1 w-full h-full" name="❤️사랑">
+              ❤️사랑
+            </button>
+          </li>
           <li className="border-b border-dashed">
             <button className="p-1 w-full h-full" name="😆기쁨">
               😆기쁨
