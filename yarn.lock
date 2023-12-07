@@ -846,6 +846,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-beautiful-dnd@npm:^13.1.7":
+  version: 13.1.7
+  resolution: "@types/react-beautiful-dnd@npm:13.1.7"
+  dependencies:
+    "@types/react": "*"
+  checksum: 62228144795614daf23d10e6a5ffb59a2b5f6dc13a753f69a81f8e5dd0f96e4d5c97db2016d2e782da3ff2b516b70cb36dfa3b95d6c10f4c9e342f871fc1a516
+  languageName: node
+  linkType: hard
+
 "@types/react-dom@npm:^18.2.17":
   version: 18.2.17
   resolution: "@types/react-dom@npm:18.2.17"
@@ -3681,6 +3690,7 @@ __metadata:
   dependencies:
     "@atlaskit/tree": ^8.8.7
     "@types/react": ^18.2.37
+    "@types/react-beautiful-dnd": ^13.1.7
     "@types/react-dom": ^18.2.17
     "@typescript-eslint/eslint-plugin": ^6.10.0
     "@typescript-eslint/parser": ^6.10.0
