@@ -7,7 +7,7 @@ interface IFormData {
   password: string;
 }
 
-const LoginScreen = () => {
+const SignInScreen = () => {
   const { register, handleSubmit } = useForm<IFormData>();
 
   const onSubmit: SubmitHandler<IFormData> = (data) => {
@@ -24,7 +24,7 @@ const LoginScreen = () => {
       </h1>
       <input
         type="email"
-        placeholder="아이디(이메일)"
+        placeholder="이메일"
         className="w-64 px-5 py-1.5 mb-2.5 border rounded-full border-slate-300 placeholder:text-xs"
         {...register("email")}
       />
@@ -53,4 +53,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default SignInScreen;

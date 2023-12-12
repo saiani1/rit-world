@@ -1,12 +1,14 @@
 import { useState } from "react";
-import LoginScreen from "./routes/login/LoginScreen";
 import HomeScreen from "./routes/home/HomeScreen";
+import SignInScreen from "./routes/signin/SignInScreen";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <div className="flex justify-center items-center h-screen bg-slate-200">
-      {isLogin ? <HomeScreen /> : <LoginScreen />}
+      {/* {isLogin ? <HomeScreen /> : <SignInScreen />} */}
+      <Outlet />
     </div>
   );
 };

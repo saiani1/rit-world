@@ -6,6 +6,8 @@ import "./index.css";
 import App from "./App";
 // import LoginScreen from "./routes/login/LoginScreen";
 import HomeScreen from "./routes/home/HomeScreen";
+import SignInScreen from "./routes/signin/SignInScreen";
+import SignUpScreen from "./routes/signup/SignUpScreen";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,26 @@ const router = createBrowserRouter([
         element: (
           <Suspense>
             <HomeScreen />
+          </Suspense>
+        ),
+        // loader: mainLoader,
+        // errorElement: <CrashErrorScreen />,
+      },
+      {
+        path: "/signin",
+        element: (
+          <Suspense>
+            <SignInScreen />
+          </Suspense>
+        ),
+        // loader: mainLoader,
+        // errorElement: <CrashErrorScreen />,
+      },
+      {
+        path: "/signup",
+        element: (
+          <Suspense>
+            <SignUpScreen />
           </Suspense>
         ),
         // loader: mainLoader,
