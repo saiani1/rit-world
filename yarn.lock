@@ -781,6 +781,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.13.4, @tanstack/query-core@npm:^5.13.4":
+  version: 5.13.4
+  resolution: "@tanstack/query-core@npm:5.13.4"
+  checksum: 9ebda1325d2774d766d0c07d3ded3f231fa785147bdf59372240d09c992b2636e5c6aa3660c1de348de395c0de5b1f8aadf28397e1134dbe2d56c38e37b7af1c
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.13.4":
+  version: 5.13.4
+  resolution: "@tanstack/react-query@npm:5.13.4"
+  dependencies:
+    "@tanstack/query-core": 5.13.4
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 5a9afef4d59eb5ac00acdc9d3c5f25c76f2a4d69609a354ff8d81d0260b571d192c3a382b1027d37b1ae8b1e1a63d3d8fba0cec00338ec53bda01721dad8f279
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.20.4":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -2517,6 +2535,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jotai-tanstack-query@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "jotai-tanstack-query@npm:0.8.0"
+  peerDependencies:
+    "@tanstack/query-core": "*"
+    jotai: ">=1.11.0"
+    wonka: ^6.3.4
+  checksum: 815ab07d37aeb05980fc2b38e9c86c33165e81b6c47a9100639c19d9ac34796be393fc649e4362551f05d816ffced3c234aa625cef289b68141f66bf1285a1af
+  languageName: node
+  linkType: hard
+
 "jotai@npm:^2.6.0":
   version: 2.6.0
   resolution: "jotai@npm:2.6.0"
@@ -3710,6 +3739,8 @@ __metadata:
   resolution: "rit-world@workspace:."
   dependencies:
     "@atlaskit/tree": ^8.8.7
+    "@tanstack/query-core": ^5.13.4
+    "@tanstack/react-query": ^5.13.4
     "@types/react": ^18.2.37
     "@types/react-beautiful-dnd": ^13.1.7
     "@types/react-dom": ^18.2.17
@@ -3725,6 +3756,7 @@ __metadata:
     framer-motion: ^10.16.12
     i18next: ^23.7.7
     jotai: ^2.6.0
+    jotai-tanstack-query: ^0.8.0
     path: ^0.12.7
     postcss: ^8.4.32
     postcss-import: ^15.1.0
@@ -3742,8 +3774,9 @@ __metadata:
     rollup-plugin-visualizer: ^5.10.0
     tailwindcss: ^3.3.5
     tinymce: ^6.8.1
-    typescript: ^5.2.2
-    vite: ^5.0.0
+    typescript: latest
+    vite: latest
+    wonka: ^6.3.4
   languageName: unknown
   linkType: soft
 
@@ -4235,23 +4268,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.2.2":
-  version: 5.3.2
-  resolution: "typescript@npm:5.3.2"
+"typescript@npm:latest":
+  version: 5.3.3
+  resolution: "typescript@npm:5.3.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d92534dda639eb825db013203404c1fabca8ac630564283c9e7dc9e64fd9c9346c2de95ecebdf3e6e8c1c32941bca1cfe0da37877611feb9daf8feeaea58d230
+  checksum: 2007ccb6e51bbbf6fde0a78099efe04dc1c3dfbdff04ca3b6a8bc717991862b39fd6126c0c3ebf2d2d98ac5e960bcaa873826bb2bb241f14277034148f41f6a2
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
-  version: 5.3.2
-  resolution: "typescript@patch:typescript@npm%3A5.3.2#~builtin<compat/typescript>::version=5.3.2&hash=29ae49"
+"typescript@patch:typescript@latest#~builtin<compat/typescript>":
+  version: 5.3.3
+  resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=29ae49"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c034461079fbfde3cb584ddee52afccb15b6e32a0ce186d0b2719968786f7ca73e1b07f71fac4163088790b16811c6ccf79680de190664ef66ff0ba9c1fe4a23
+  checksum: f61375590b3162599f0f0d5b8737877ac0a7bc52761dbb585d67e7b8753a3a4c42d9a554c4cc929f591ffcf3a2b0602f65ae3ce74714fd5652623a816862b610
   languageName: node
   linkType: hard
 
@@ -4321,9 +4354,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0":
-  version: 5.0.5
-  resolution: "vite@npm:5.0.5"
+"vite@npm:latest":
+  version: 5.0.8
+  resolution: "vite@npm:5.0.8"
   dependencies:
     esbuild: ^0.19.3
     fsevents: ~2.3.3
@@ -4357,7 +4390,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 8df70302934de39ad6fda4f28246e07850f849c2bd197b7af93615f5f39955be460dd19940a46ec5bf2adf81bc32b60985eb5990142212754c733eba4fe3bfa3
+  checksum: 884dc2f17aa2c41786c5acd4ff420d1f291fef7653786ed7bd59d4275e18483c94eabe44dd3a9741798ef65270dcbb6edfa280b60004314db50ac43476ff3d81
   languageName: node
   linkType: hard
 
@@ -4406,6 +4439,13 @@ __metadata:
   dependencies:
     string-width: ^1.0.2 || 2 || 3 || 4
   checksum: d5fc37cd561f9daee3c80e03b92ed3e84d80dde3365a8767263d03dacfc8fa06b065ffe1df00d8c2a09f731482fcacae745abfbb478d4af36d0a891fad4834d3
+  languageName: node
+  linkType: hard
+
+"wonka@npm:^6.3.4":
+  version: 6.3.4
+  resolution: "wonka@npm:6.3.4"
+  checksum: 6bb57955cb2982fb469a7824484e6854b436f89a7f10b6a981348789d88fbc944665771adc4cc404f62416417eb47ab2b8657d898e5301ccd4a53eaac6a10508
   languageName: node
   linkType: hard
 

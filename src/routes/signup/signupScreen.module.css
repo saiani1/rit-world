@@ -1,0 +1,23 @@
+.form-wrap {
+  @apply relative flex flex-col w-[400px] h-[550px] px-[50px] py-[60px] bg-white rounded-3xl;
+}
+
+.logo-wrap {
+  @apply flex flex-col justify-center items-center mt-[25px] mb-[60px];
+}
+
+.duplicate-btn {
+  @apply w-28 py-1.5 bg-gray-500 text-white text-[13px] rounded-full;
+}
+
+.btn-wrap {
+  @apply absolute bottom-[60px] right-[50px] left-[50px] flex gap-x-4;
+}
+
+.reset-btn {
+  @apply w-64 py-1.5 mt-5 text-gray-700 bg-white rounded-full border border-slate-300;
+}
+
+.submit-btn {
+  @apply w-64 py-1.5 mt-5 bg-gray-700 text-white rounded-full;
+}

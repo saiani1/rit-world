@@ -1,6 +1,9 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { motion } from "framer-motion";
 
 import logo from "../../assets/logo.svg";
+import Input from "@/components/common/input/Input";
+import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
 
 interface IFormData {
   email: string;
@@ -8,7 +11,11 @@ interface IFormData {
 }
 
 const SignInScreen = () => {
-  const { register, handleSubmit } = useForm<IFormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormData>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IFormData> = (data) => {
     console.log(data);
@@ -22,18 +29,27 @@ const SignInScreen = () => {
       <h1 className="w-52 mb-8">
         <img src={logo} alt="logo" />
       </h1>
-      <input
-        type="email"
-        placeholder="이메일"
-        className="w-64 px-5 py-1.5 mb-2.5 border rounded-full border-slate-300 placeholder:text-xs"
-        {...register("email")}
-      />
-      <input
-        type="password"
-        placeholder="비밀번호"
-        className="w-64 px-5 py-1.5 border rounded-full border-slate-300 placeholder:text-xs"
-        {...register("password")}
-      />
+      <motion.div
+        layout
+        transition={{ duration: 0.2 }}
+        className="flex flex-col gap-y-2"
+      >
+        <Input
+          type="email"
+          name="email"
+          placeholder="이메일"
+          page="signin"
+          register={register}
+        />
+        {errors.email && <ErrorMsg message={errors.email.message} />}
+        <Input
+          type="password"
+          name="password"
+          placeholder="비밀번호"
+          page="signin"
+          register={register}
+        />
+      </motion.div>
       <button
         type="submit"
         className="w-64 py-1.5 mt-5 bg-gray-700 text-white rounded-full "
