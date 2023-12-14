@@ -79,30 +79,32 @@ const SignUpScreen = () => {
               중복확인
             </button>
           </motion.div>
-          {errors.email && <ErrorMsg message={errors.email.message} />}
+          {errors.email?.message && <ErrorMsg message={errors.email.message} />}
         </div>
-        <motion.div
-          layout
-          transition={{ duration: 0.2 }}
-          className="flex flex-col gap-y-2 mb-2"
-        >
-          <Input
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            register={register}
-          />
-          <Input
-            type="password"
-            name="confirm_password"
-            placeholder="비밀번호 확인"
-            register={register}
-            watch={watch}
-          />
-        </motion.div>
-        {errors.confirm_password && (
-          <ErrorMsg message={errors.confirm_password.message} />
-        )}
+        <div className="mb-2">
+          <motion.div
+            layout
+            transition={{ duration: 0.2 }}
+            className="flex flex-col gap-y-2"
+          >
+            <Input
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              register={register}
+            />
+            <Input
+              type="password"
+              name="confirm_password"
+              placeholder="비밀번호 확인"
+              register={register}
+              watch={watch}
+            />
+          </motion.div>
+          {errors.confirm_password?.message && (
+            <ErrorMsg message={errors.confirm_password.message} />
+          )}
+        </div>
         <motion.div
           layout
           transition={{ duration: 0.2 }}
