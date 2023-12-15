@@ -11,9 +11,9 @@ interface IProps {
 const Input = ({ type, name, placeholder, register, watch, page }: IProps) => {
   const inputRegister = () => {
     switch (name) {
-      case "email":
+      case "userId":
         return {
-          ...register("email", {
+          ...register("userId", {
             required: true,
             pattern: {
               value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,

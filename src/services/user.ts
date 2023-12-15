@@ -1,14 +1,9 @@
 import { basicRequest } from "./base";
 
-const SERVICE = "/api/user";
+const SERVICE = "/user";
 
-export const testApi = async () => {
-  const res = await basicRequest.get("/");
-  return res;
-};
-
-export const checkDuplicateIdAPI = async (id: string) => {
-  const params = { id };
+export const checkDuplicateIdAPI = async (userId: string) => {
+  const params = { userId };
   const res = await basicRequest.get(`${SERVICE}/checkId`, {
     params,
   });
@@ -23,10 +18,8 @@ export const checkDuplicateNicknameAPI = async (nickname: string) => {
   return res;
 };
 
-export const submitSignUpAPI = async (userInfo: ISignUpUserInfo) => {
-  const params = { userInfo };
-  const res = await basicRequest.post(`${SERVICE}/submit`, {
-    params,
-  });
+export const signUpAPI = async (userInfo: IUserInfo) => {
+  const params = userInfo;
+  const res = await basicRequest.post(`${SERVICE}/signUp`, params);
   return res;
 };

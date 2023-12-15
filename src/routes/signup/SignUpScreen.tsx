@@ -10,15 +10,8 @@ import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
 import {
   checkDuplicateIdAPI,
   checkDuplicateNicknameAPI,
-  testApi,
+  signUpAPI,
 } from "@/services/user";
-
-interface IFormData {
-  email: string;
-  password: string;
-  confirm_password: string;
-  nickname: string;
-}
 
 const SignUpScreen = () => {
   const [checkedDuplicate, setCheckedDuplicate] = useState({
@@ -31,12 +24,17 @@ const SignUpScreen = () => {
     watch,
     getValues,
     formState: { errors },
-  } = useForm<IFormData>({ mode: "onChange" });
+  } = useForm<IUserInfo>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IFormData> = (data) => {
+  const onSubmit: SubmitHandler<IUserInfo> = () => {
+    console.log(getValues());
     if (Object.values(checkedDuplicate).every((v) => v === true) === true) {
-      // api호출
-      console.log(data);
+      const data = getValues();
+      signUpAPI(data)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
     } else {
       toast.error("중복확인 검사를 완료해주세요.");
     }
@@ -46,22 +44,35 @@ const SignUpScreen = () => {
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
     const name = (e.target as HTMLButtonElement).name;
-    // testApi()
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
     if (
-      name === "email" &&
-      getValues("email").length !== 0 &&
-      errors.email?.message === undefined
+      name === "userId" &&
+      getValues("userId").length !== 0 &&
+      errors.userId?.message === undefined
     ) {
-      const email = getValues("email");
+      const email = getValues("userId");
       checkDuplicateIdAPI(email)
-        .then((res) => console.log(res))
+        .then((res) => {
+          if (res.data.isDuplicate === true) {
+            toast.error("사용할 수 없는 아이디입니다.");
+            setCheckedDuplicate({ ...checkedDuplicate, email: false });
+          } else {
+            toast.success("사용할 수 있는 아이디입니다.");
+            setCheckedDuplicate({ ...checkedDuplicate, email: true });
+          }
+        })
         .catch((err) => console.log(err));
-    } else if (name === "nickname" && getValues("email").length !== 0) {
+    } else if (name === "nickname" && getValues("nickname").length !== 0) {
       const nickname = getValues("nickname");
       checkDuplicateNicknameAPI(nickname)
-        .then((res) => console.log(res))
+        .then((res) => {
+          if (res.data.isDuplicate === true) {
+            toast.error("사용할 수 없는 닉네임입니다.");
+            setCheckedDuplicate({ ...checkedDuplicate, nickname: false });
+          } else {
+            toast.success("사용할 수 있는 닉네임입니다.");
+            setCheckedDuplicate({ ...checkedDuplicate, nickname: true });
+          }
+        })
         .catch((err) => console.log(err));
     } else return;
   };
@@ -86,7 +97,7 @@ const SignUpScreen = () => {
           >
             <Input
               type="email"
-              name="email"
+              name="userId"
               placeholder="이메일"
               register={register}
             />
@@ -94,12 +105,14 @@ const SignUpScreen = () => {
               type="button"
               className={styles["duplicate-btn"]}
               onClick={handleClickCheckDuplicate}
-              name="email"
+              name="userId"
             >
               중복확인
             </button>
           </motion.div>
-          {errors.email?.message && <ErrorMsg message={errors.email.message} />}
+          {errors.userId?.message && (
+            <ErrorMsg message={errors.userId.message} />
+          )}
         </div>
         <div className="mb-2">
           <motion.div
