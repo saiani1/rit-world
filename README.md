@@ -1,4 +1,5 @@
 # RITWORLD
+
 ![스크린샷 2023-12-15 161646](https://github.com/saiani1/rit-world/assets/68591616/f2462891-6ba8-4766-b5d7-f9e5b23eced2)
 
 아래의 라이브러리를 사용해서 싸이월드와 같은 웹사이트 만들기 도전!
@@ -18,4 +19,5 @@
 - [ ] react-pdf: 화면을 pdf로 변환할 때 사용하는 라이브러리
 - [ ] i18next: 다국어 처리
 - [ ] tinymce: 텍스트 에디터
+- [ ] localforage: IndexedDB, WebSQL, localStorage 등을 사용하여 데이터를 저장하는 라이브러리
 - [ ] dompurify: XSS공격 방지
