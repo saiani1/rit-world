@@ -24,9 +24,9 @@ const SignUpScreen = () => {
     watch,
     getValues,
     formState: { errors },
-  } = useForm<IUserInfo>({ mode: "onChange" });
+  } = useForm<ISignUpUserInfo>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IUserInfo> = () => {
+  const onSubmit: SubmitHandler<ISignUpUserInfo> = () => {
     console.log(getValues());
     if (Object.values(checkedDuplicate).every((v) => v === true) === true) {
       const data = getValues();

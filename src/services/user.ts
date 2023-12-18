@@ -18,8 +18,14 @@ export const checkDuplicateNicknameAPI = async (nickname: string) => {
   return res;
 };
 
-export const signUpAPI = async (userInfo: IUserInfo) => {
+export const signUpAPI = async (userInfo: ISignUpUserInfo) => {
   const params = userInfo;
   const res = await basicRequest.post(`${SERVICE}/signUp`, params);
+  return res;
+};
+
+export const signInAPI = async (userInfo: ISignInUserInfo) => {
+  const params = userInfo;
+  const res = await basicRequest.post(`${SERVICE}/signIn`, params);
   return res;
 };

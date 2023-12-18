@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import logo from "../../assets/logo.svg";
 import Input from "@/components/common/input/Input";
 import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
+import { signInAPI } from "@/services/user";
 
 interface IFormData {
-  email: string;
+  userId: string;
   password: string;
 }
 
@@ -14,11 +15,18 @@ const SignInScreen = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm<IFormData>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IFormData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IFormData> = () => {
+    console.log();
+    if (!errors.userId && getValues().password.length !== 0) {
+      const data = getValues();
+      signInAPI(data)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -36,12 +44,12 @@ const SignInScreen = () => {
       >
         <Input
           type="email"
-          name="email"
+          name="userId"
           placeholder="이메일"
           page="signin"
           register={register}
         />
-        {errors.email && <ErrorMsg message={errors.email.message} />}
+        {errors.userId && <ErrorMsg message={errors.userId.message} />}
         <Input
           type="password"
           name="password"
