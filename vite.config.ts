@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import jotaiDegubLabel from "jotai/babel/plugin-debug-label";
+import jotaiReactRefresh from "jotai/babel/plugin-react-refresh";
 import * as path from "path";
 
 import { visualizer } from "rollup-plugin-visualizer";
@@ -45,7 +47,10 @@ export default defineConfig({
       plugins: [visualizer({ template: "sunburst" })],
     },
   },
-  plugins: [react(), visualizer()],
+  plugins: [
+    react({ babel: { plugins: [jotaiDegubLabel, jotaiReactRefresh] } }),
+    visualizer(),
+  ],
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
   },
