@@ -37,6 +37,7 @@
     "react-router-dom": "^6.20.1",
     "rollup-plugin-visualizer": "^5.10.0",
     "tinymce": "^6.8.1",
+    "vite-plugin-svgr": "^4.2.0",
     "wonka": "^6.3.4"
   },
   "devDependencies": {

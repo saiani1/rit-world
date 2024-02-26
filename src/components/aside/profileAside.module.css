@@ -1,13 +1,13 @@
 .wrap {
-  @apply flex flex-col gap-y-2 justify-end pt-8 p-3 w-[20%] min-w-[300px] rounded-xl bg-slate-300;
+  @apply flex gap-y-2 justify-between pt-8 p-3 w-[280px] h-[450px] rounded-xl;
 }
 
 .profile-wrap {
-  @apply flex flex-col justify-between h-full p-8 bg-white rounded-lg border-2 border-slate-400;
+  @apply flex flex-col justify-between h-full overflow-hidden bg-white rounded-lg;
 }
 
 .introduce-txt {
-  @apply flex h-48 justify-center items-center;
+  @apply flex py-[30px] justify-center items-center;
 }
 
 .edit-wrap {
@@ -19,11 +19,11 @@
 }
 
 .info-wrap {
-  @apply flex items-center gap-x-1;
+  @apply flex items-baseline gap-x-[10px] border-b-[1px] border-[#ddd];
 }
 
 .nickname {
-  @apply font-black text-lg	text-indigo-800;
+  @apply font-semibold text-[23px] text-[#444];
 }
 
 .gender-wrap {

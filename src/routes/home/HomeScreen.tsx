@@ -5,7 +5,7 @@ import HomeSection from "@/components/home/components/HomeSection";
 
 const HomeScreen = () => {
   return (
-    <div className=" w-full h-full">
+    <div className="w-full h-full">
       <Header />
       <ProfileAside />
       <HomeSection />
