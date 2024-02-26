@@ -1,16 +1,33 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { useAtom } from "jotai";
+import localforage from "localforage";
+import Cookies from "js-cookie";
 
-import HomeScreen from "./routes/home/HomeScreen";
-import SignInScreen from "./routes/signin/SignInScreen";
+import SignInScreen from "@/routes/signin/SignInScreen";
+import { loginAtom } from "@/store/user";
+
+localforage.config({
+  driver: localforage.LOCALSTORAGE,
+  name: "ritworld",
+});
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useAtom(loginAtom);
+  const loginCookie = Cookies.get("login");
+
+  useEffect(() => {
+    if (loginCookie) {
+      setIsLogin(true);
+      navigate("/home", { replace: true });
+    } else setIsLogin(false);
+  }, [loginCookie, navigate]);
+
   return (
     <div className="flex justify-center items-center h-screen bg-slate-200">
-      {/* {isLogin ? <HomeScreen /> : <SignInScreen />} */}
-      <Outlet />
+      {isLogin ? <Outlet /> : <SignInScreen />}
       <Toaster
         containerStyle={{
           top: 20,

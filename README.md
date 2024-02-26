@@ -21,3 +21,4 @@
 - [ ] tinymce: 텍스트 에디터
 - [ ] localforage: IndexedDB, WebSQL, localStorage 등을 사용하여 데이터를 저장하는 라이브러리
 - [ ] dompurify: XSS공격 방지
+- [ ] js-cookie: 쿠키 처리를 위한 라이브러리

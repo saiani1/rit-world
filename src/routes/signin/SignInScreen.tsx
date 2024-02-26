@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
-import logo from "../../assets/logo.svg";
+import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
 import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
 import { signInAPI } from "@/services/user";
@@ -12,6 +15,7 @@ interface IFormData {
 }
 
 const SignInScreen = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,7 +28,13 @@ const SignInScreen = () => {
     if (!errors.userId && getValues().password.length !== 0) {
       const data = getValues();
       signInAPI(data)
-        .then((res) => console.log(res))
+        .then((res) => {
+          if (res.status === 200) {
+            Cookies.set("login", "Y", { sameSite: "strict" });
+            navigate("/home", { replace: true });
+            toast.success("로그인 했습니다.");
+          }
+        })
         .catch((err) => console.log(err));
     }
   };

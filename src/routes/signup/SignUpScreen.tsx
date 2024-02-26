@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 
 import styles from "./signupScreen.module.css";
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
 import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
 import {

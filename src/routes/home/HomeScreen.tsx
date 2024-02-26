@@ -1,10 +1,12 @@
 import ProfileAside from "@/components/aside/ProfileAside";
 import GNB from "@/components/common/gnb/GNB";
+import Header from "@/components/common/header/Header";
 import HomeSection from "@/components/home/components/HomeSection";
 
 const HomeScreen = () => {
   return (
-    <div className="flex w-full h-full relative pl-10 pr-20 py-10">
+    <div className=" w-full h-full">
+      <Header />
       <ProfileAside />
       <HomeSection />
       <GNB />

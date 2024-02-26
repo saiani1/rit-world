@@ -87,7 +87,13 @@ const GNB = () => {
             {...provided.droppableProps}
           >
             <li className="flex justify-center items-center">
-              <span className="flex justify-center items-center w-20 h-10 rounded-r-md border-y-2 border-r-2 border-slate-400 text-white bg-slate-400 cursor-pointer">
+              <span
+                className={`flex justify-center items-center w-20 h-10 rounded-r-md border-y-2 border-r-2 border-slate-400 cursor-pointer ${
+                  clickedMenu === "홈"
+                    ? "bg-white text-slate-400 font-bold"
+                    : "text-white bg-slate-400"
+                }`}
+              >
                 홈
               </span>
             </li>
@@ -111,6 +117,8 @@ const GNB = () => {
                         clickedMenu === gnb.name
                           ? "bg-white text-slate-400 font-bold"
                           : "text-white bg-slate-400"
+                      } ${
+                        isActiveDND && "text-white bg-red-400 border-red-400"
                       }`}
                     >
                       {gnb.name}
@@ -120,7 +128,6 @@ const GNB = () => {
               </Draggable>
             ))}
             {provided.placeholder}
-
             <li className="flex justify-center items-center">
               <button
                 type="button"
