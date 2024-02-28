@@ -15,20 +15,20 @@ localforage.config({
 
 const App = () => {
   const navigate = useNavigate();
-  // const [isLogin, setIsLogin] = useAtom(loginAtom);
-  // const loginCookie = Cookies.get("login");
+  const [isLogin, setIsLogin] = useAtom(loginAtom);
+  const loginCookie = Cookies.get("login");
 
   useEffect(() => {
-    // if (loginCookie) {
-    //   setIsLogin(true);
+    if (loginCookie) {
+      setIsLogin(true);
       navigate("/home", { replace: true });
-    // } else setIsLogin(false);
+    } else setIsLogin(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="flex justify-center items-center h-screen bg-slate-200">
-      {/* {isLogin ? <Outlet /> : <SignInScreen />} */}
-      <Outlet />
+      {isLogin ? <Outlet /> : <SignInScreen />}
       <Toaster
         containerStyle={{
           top: 20,

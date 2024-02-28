@@ -1,13 +1,9 @@
 .wrap {
-  @apply flex gap-y-2 justify-between pt-8 p-3 w-[280px] h-[450px] rounded-xl;
-}
-
-.profile-wrap {
-  @apply flex flex-col justify-between h-full overflow-hidden bg-white rounded-lg;
+  @apply flex flex-col gap-y-2 justify-between overflow-hidden w-[280px] h-[450px] bg-white rounded-xl;
 }
 
 .introduce-txt {
-  @apply flex py-[30px] justify-center items-center;
+  @apply flex mb-[20px] justify-center items-center;
 }
 
 .edit-wrap {
