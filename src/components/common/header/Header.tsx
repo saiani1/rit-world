@@ -24,7 +24,7 @@ const Header = () => {
   }
 
   return (
-    <header className="flex justify-center w-full h-[100px] bg-white">
+    <header className="flex justify-center w-full min-h-[80px] bg-white">
       <div className="flex justify-between items-center w-[1280px] h-full">
         <button type="button" onClick={handleClick}>
           <h1 className="relative flex items-baseline gap-x-[8px] font-bold text-purple-700">
