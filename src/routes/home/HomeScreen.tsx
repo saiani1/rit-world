@@ -7,12 +7,14 @@ const HomeScreen = () => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <Header />
-      <div className="flex justify-between w-[1280px] mt-[10px]">
+      <div className="flex justify-between w-[1280px] mt-[10px] gap-x-[10px]">
         <div>
-          <ProfileAside />
+          {/* <ProfileAside /> */}
           <GNB />
         </div>
-        <Outlet />
+        <div className="w-full bg-white rounded-xl">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,15 @@
-import { Suspense } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import App from "@/App";
-import HomeScreen from "@/routes/home/HomeScreen";
-import SignInScreen from "@/routes/signin/SignInScreen";
-import SignUpScreen from "@/routes/signup/SignUpScreen";
+
+const HomeScreen = lazy(() => import("./routes/home/HomeScreen"));
+const BlogList = lazy(() => import("./routes/home/components/BlogList"));
+const SignInScreen = lazy(() => import("./routes/signin/SignInScreen"));
+const SignUpScreen = lazy(() => import("./routes/signup/SignUpScreen"));
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,15 @@ const router = createBrowserRouter([
             <HomeScreen />
           </Suspense>
         ),
+        children: [
+          {
+            path: "",
+            element:
+              <Suspense>
+                <BlogList />
+              </Suspense>
+          }
+        ]
         // loader: mainLoader,
         // errorElement: <CrashErrorScreen />,
       },
