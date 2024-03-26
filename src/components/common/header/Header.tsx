@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import logo from "@/assets/logo.png";
 
@@ -23,6 +24,15 @@ const Header = () => {
     navigate("/list");
   }
 
+  const handleClickHeader = (e: React.MouseEvent<HTMLUListElement>) => {
+    const name = (e.target as HTMLButtonElement).name;
+    if (name === "LOG OUT") {
+      Cookies.remove('login');
+      console.log("로그아웃되었습니다.")
+    }
+
+  }
+
   return (
     <header className="flex justify-center items-center w-full min-h-[80px] bg-white">
       <div className="flex justify-between items-center w-[1280px] h-full">
@@ -33,11 +43,15 @@ const Header = () => {
           </h1>
         </button>
         <nav>
-          <ul className="flex gap-x-[30px]">
+          <ul className="flex gap-x-[30px]" onClick={handleClickHeader}>
             {
               GNB_ARR.map((gnb) => (
               <li key={gnb.id}>
-                <button type="button" className="text-[17px] text-[#777] font-semibold">
+                <button
+                  type="button"
+                  className="text-[17px] text-[#777] font-semibold"
+                  name={gnb.title}
+                >
                   {gnb.title}
                 </button>
               </li>

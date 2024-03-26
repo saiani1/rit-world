@@ -17,32 +17,40 @@ localforage.config({
 });
 
 const App = () => {
-  // const navigate = useNavigate();
-  // const [isLogin, setIsLogin] = useAtom(loginAtom);
-  // const loginCookie = Cookies.get("login");
+  const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useAtom(loginAtom);
+  const loginCookie = Cookies.get("login");
 
-  // useEffect(() => {
-  //   if (loginCookie) {
-  //     setIsLogin(true);
-  //     navigate("/home", { replace: true });
-  //   } else setIsLogin(false);
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    console.log("useEffect발동")
+    if (loginCookie) {
+      setIsLogin(true);
+      navigate("/list", { replace: true });
+    } else {
+      setIsLogin(false);
+      navigate("/signin", { replace: true });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginCookie]);
 
   return (
-    <div className="flex justify-center items-center h-full bg-slate-200">
-      <div className="flex flex-col items-center w-full h-full">
-        <Header />
-        <div className="flex justify-between w-[1280px] mt-[10px] mb-[40px] gap-x-[10px]">
-          <div>
-            <ProfileAside />
-            <GNB />
-          </div>
-          <div className="w-full h-screen px-[50px] py-[40px] bg-white rounded-xl overflow-scroll">
-            <Outlet />
+    <div className="flex justify-center items-center h-screen bg-slate-200">
+      {isLogin ? (
+        <div className="flex flex-col items-center w-full h-full">
+          <Header />
+          <div className="flex justify-between w-[1280px] mt-[10px] mb-[40px] gap-x-[10px]">
+            <div>
+              <ProfileAside />
+              <GNB />
+            </div>
+            <div className="w-full h-screen px-[50px] py-[40px] bg-white rounded-xl overflow-scroll">
+              <Outlet />
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <SignInScreen />
+      )}
       <Toaster
         containerStyle={{
           top: 20,

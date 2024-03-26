@@ -44,7 +44,7 @@ const SignInScreen = () => {
       className="flex flex-col justify-center items-center w-96 h-96 rounded-full bg-white"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h1 className="w-52 mb-8">
+      <h1 className="flex justify-center w-52 mb-8">
         <img src={logo} alt="logo" />
       </h1>
       <motion.div
