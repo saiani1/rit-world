@@ -20,11 +20,11 @@ const GNB_ARR = [
 const Header = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/home");
+    navigate("/list");
   }
 
   return (
-    <header className="flex justify-center w-full min-h-[80px] bg-white">
+    <header className="flex justify-center items-center w-full min-h-[80px] bg-white">
       <div className="flex justify-between items-center w-[1280px] h-full">
         <button type="button" onClick={handleClick}>
           <h1 className="relative flex items-baseline gap-x-[8px] font-bold text-purple-700">
