@@ -78,96 +78,98 @@ const SignUpScreen = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={styles["form-wrap"]}
-      noValidate
-    >
-      <div className={styles["logo-wrap"]}>
-        <h1>
-          <img src={logo} alt="logo" className="w-[230px]" />
-        </h1>
-      </div>
-      <div className="flex flex-col">
-        <div className="mb-2">
+    <div className="flex justify-center items-center w-full h-screen bg-slate-200">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles["form-wrap"]}
+        noValidate
+      >
+        <div className={styles["logo-wrap"]}>
+          <h1>
+            <img src={logo} alt="logo" className="w-[160px]" />
+          </h1>
+        </div>
+        <div className="flex flex-col">
+          <div className="mb-2">
+            <motion.div
+              layout
+              transition={{ duration: 0.2 }}
+              className="flex gap-x-3"
+            >
+              <Input
+                type="email"
+                name="userId"
+                placeholder="이메일"
+                register={register}
+              />
+              <button
+                type="button"
+                className={styles["duplicate-btn"]}
+                onClick={handleClickCheckDuplicate}
+                name="userId"
+              >
+                중복확인
+              </button>
+            </motion.div>
+            {errors.userId?.message && (
+              <ErrorMsg message={errors.userId.message} />
+            )}
+          </div>
+          <div className="mb-2">
+            <motion.div
+              layout
+              transition={{ duration: 0.2 }}
+              className="flex flex-col gap-y-2"
+            >
+              <Input
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                register={register}
+              />
+              <Input
+                type="password"
+                name="confirm_password"
+                placeholder="비밀번호 확인"
+                register={register}
+                watch={watch}
+              />
+            </motion.div>
+            {errors.confirm_password?.message && (
+              <ErrorMsg message={errors.confirm_password.message} />
+            )}
+          </div>
           <motion.div
             layout
             transition={{ duration: 0.2 }}
             className="flex gap-x-3"
           >
             <Input
-              type="email"
-              name="userId"
-              placeholder="이메일"
+              type="text"
+              name="nickname"
+              placeholder="닉네임"
               register={register}
             />
             <button
               type="button"
               className={styles["duplicate-btn"]}
+              name="nickname"
               onClick={handleClickCheckDuplicate}
-              name="userId"
             >
               중복확인
             </button>
           </motion.div>
-          {errors.userId?.message && (
-            <ErrorMsg message={errors.userId.message} />
-          )}
         </div>
-        <div className="mb-2">
-          <motion.div
-            layout
-            transition={{ duration: 0.2 }}
-            className="flex flex-col gap-y-2"
-          >
-            <Input
-              type="password"
-              name="password"
-              placeholder="비밀번호"
-              register={register}
-            />
-            <Input
-              type="password"
-              name="confirm_password"
-              placeholder="비밀번호 확인"
-              register={register}
-              watch={watch}
-            />
-          </motion.div>
-          {errors.confirm_password?.message && (
-            <ErrorMsg message={errors.confirm_password.message} />
-          )}
-        </div>
-        <motion.div
-          layout
-          transition={{ duration: 0.2 }}
-          className="flex gap-x-3"
-        >
-          <Input
-            type="text"
-            name="nickname"
-            placeholder="닉네임"
-            register={register}
-          />
-          <button
-            type="button"
-            className={styles["duplicate-btn"]}
-            name="nickname"
-            onClick={handleClickCheckDuplicate}
-          >
-            중복확인
+        <div className={styles["btn-wrap"]}>
+          <button type="reset" className={styles["reset-btn"]}>
+            취소
           </button>
-        </motion.div>
-      </div>
-      <div className={styles["btn-wrap"]}>
-        <button type="reset" className={styles["reset-btn"]}>
-          취소
-        </button>
-        <button type="submit" className={styles["submit-btn"]}>
-          제출
-        </button>
-      </div>
-    </form>
+          <button type="submit" className={styles["submit-btn"]}>
+            제출
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

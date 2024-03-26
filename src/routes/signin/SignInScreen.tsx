@@ -40,50 +40,52 @@ const SignInScreen = () => {
   };
 
   return (
-    <form
-      className="flex flex-col justify-center items-center w-96 h-96 rounded-full bg-white"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <h1 className="flex justify-center w-52 mb-8">
-        <img src={logo} alt="logo" />
-      </h1>
-      <motion.div
-        layout
-        transition={{ duration: 0.2 }}
-        className="flex flex-col gap-y-2"
+    <div className="flex justify-center items-center w-full h-screen bg-slate-200">
+      <form
+        className="flex flex-col justify-center items-center w-96 h-96 rounded-full bg-white"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <Input
-          type="email"
-          name="userId"
-          placeholder="이메일"
-          page="signin"
-          register={register}
-        />
-        {errors.userId && <ErrorMsg message={errors.userId.message} />}
-        <Input
-          type="password"
-          name="password"
-          placeholder="비밀번호"
-          page="signin"
-          register={register}
-        />
-      </motion.div>
-      <button
-        type="submit"
-        className="w-64 py-1.5 mt-5 bg-gray-700 text-white rounded-full "
-      >
-        로그인
-      </button>
-      <div className="flex justify-between w-48 mt-5 text-xs text-gray-400">
-        <button
-          type="button"
-          className="relative after:absolute after:content-[''] after:w-px after:h-2.5 after:top-1 after:left-32 after:bg-gray-300"
+        <h1 className="flex justify-center w-52 mb-8">
+          <img src={logo} alt="logo" />
+        </h1>
+        <motion.div
+          layout
+          transition={{ duration: 0.2 }}
+          className="flex flex-col gap-y-2"
         >
-          아이디/비밀번호 찾기
+          <Input
+            type="email"
+            name="userId"
+            placeholder="이메일"
+            page="signin"
+            register={register}
+          />
+          {errors.userId && <ErrorMsg message={errors.userId.message} />}
+          <Input
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            page="signin"
+            register={register}
+          />
+        </motion.div>
+        <button
+          type="submit"
+          className="w-64 py-1.5 mt-5 bg-gray-700 text-white rounded-full "
+        >
+          로그인
         </button>
-        <button type="button">회원가입</button>
-      </div>
-    </form>
+        <div className="flex justify-between w-48 mt-5 text-xs text-gray-400">
+          <button
+            type="button"
+            className="relative after:absolute after:content-[''] after:w-px after:h-2.5 after:top-1 after:left-32 after:bg-gray-300"
+          >
+            아이디/비밀번호 찾기
+          </button>
+          <button type="button">회원가입</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

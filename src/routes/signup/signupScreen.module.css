@@ -3,7 +3,7 @@
 }
 
 .logo-wrap {
-  @apply flex flex-col justify-center items-center mt-[25px] mb-[60px];
+  @apply flex flex-col justify-center items-center mt-[70px] mb-[60px];
 }
 
 .duplicate-btn {

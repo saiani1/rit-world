@@ -38,27 +38,27 @@ const router = createBrowserRouter([
         // loader: mainLoader,
         // errorElement: <CrashErrorScreen />,
       },
-      {
-        path: "/signin",
-        element: (
-          <Suspense>
-            <SignInScreen />
-          </Suspense>
-        ),
-        // loader: mainLoader,
-        // errorElement: <CrashErrorScreen />,
-      },
-      {
-        path: "/signup",
-        element: (
-          <Suspense>
-            <SignUpScreen />
-          </Suspense>
-        ),
-        // loader: mainLoader,
-        // errorElement: <CrashErrorScreen />,
-      },
     ],
+  },
+  {
+    path: "/signin",
+    element: (
+      <Suspense>
+        <SignInScreen />
+      </Suspense>
+    ),
+    // loader: mainLoader,
+    // errorElement: <CrashErrorScreen />,
+  },
+  {
+    path: "/signup",
+    element: (
+      <Suspense>
+        <SignUpScreen />
+      </Suspense>
+    ),
+    // loader: mainLoader,
+    // errorElement: <CrashErrorScreen />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
