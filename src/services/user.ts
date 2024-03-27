@@ -1,31 +1,54 @@
-import { basicRequest } from "./base";
+import { supabase } from "@/lib/supabase";
 
-const SERVICE = "/user";
+export const checkDuplicateIdAPI = async (email: string) => {
+  const { error, count } = await supabase
+    .from("user")
+    .select("email", { count: "exact" })
+    .eq("email", email)
 
-export const checkDuplicateIdAPI = async (userId: string) => {
-  const params = { userId };
-  const res = await basicRequest.get(`${SERVICE}/checkId`, {
-    params,
-  });
-  return res;
+  if (error) {
+    console.error("에러 발생", error)
+    return false;
+  }
+
+  return count !== null ? count > 0 : false;
 };
 
 export const checkDuplicateNicknameAPI = async (nickname: string) => {
-  const params = { nickname };
-  const res = await basicRequest.get(`${SERVICE}/checkNickname`, {
-    params,
-  });
-  return res;
+  const { error, count } = await supabase
+    .from("user")
+    .select("nickname", { count: "exact" })
+    .eq("nickname", nickname)
+
+  if (error) {
+    console.error("에러 발생", error)
+    return false;
+  }
+
+  return count !== null ? count > 0 : false;
 };
 
-export const signUpAPI = async (userInfo: ISignUpUserInfo) => {
-  const params = userInfo;
-  const res = await basicRequest.post(`${SERVICE}/signUp`, params);
-  return res;
-};
+export const submitAPI = async (formData: ISignUpUserInfo) => {
+  const { data, error } = await supabase.auth.signUp({
+    email: formData.userId,
+    password: formData.password,
+    options: {
+      data: {
+        nickname: formData.nickname
+      }
+    }
+  })
+  if (error) {
+    console.error('가입 에러', error);
+    return;
+  }
 
-export const signInAPI = async (userInfo: ISignInUserInfo) => {
-  const params = userInfo;
-  const res = await basicRequest.post(`${SERVICE}/signIn`, params);
-  return res;
-};
+  return data;
+}
+
+export const logOutAPI = async () => {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) console.error("로그아웃 에러", error);
+  else return true;
+}

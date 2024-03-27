@@ -1,38 +1,32 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { useAtom } from "jotai";
 import localforage from "localforage";
-import Cookies from "js-cookie";
 
-import { loginAtom } from "@/store/user";
 import Header from "./components/common/header/Header";
 import ProfileAside from "./components/aside/ProfileAside";
 import GNB from "./components/common/gnb/GNB";
+import { supabase } from "./lib/supabase";
+import { useAtom } from "jotai";
+import { loginAtom } from "./store/user";
 
 localforage.config({
   driver: localforage.LOCALSTORAGE,
   name: "ritworld",
 });
 
-
-
 const App = () => {
-  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useAtom(loginAtom);
-  const loginCookie = Cookies.get("login");
+  console.log("isLogin", isLogin);
 
-  // useEffect(() => {
-  //   console.log("useEffect발동")
-  //   if (loginCookie) {
-  //     setIsLogin(true);
-  //     navigate("/list", { replace: true });
-  //   } else {
-  //     setIsLogin(false);
-  //     navigate("/signin", { replace: true });
-  //   }
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [loginCookie]);
+  useEffect(() => {
+    (async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) setIsLogin(true);
+      else setIsLogin(false)
+    })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-screen bg-slate-200">

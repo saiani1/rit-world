@@ -19,10 +19,12 @@ const Input = ({ type, name, placeholder, register, watch, page }: IProps) => {
               value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
               message: "이메일 형식에 맞지 않습니다.",
             },
+            setValueAs: (v:string) => v.trim(),
+            onBlur: (e:any) => e.currentTarget.value = e.currentTarget.value.trim()
           }),
         };
       case "password":
-        return { ...register("password", { required: true }) };
+        return { ...register("password", {required: true }) };
       case "confirm_password":
         return {
           ...register("confirm_password", {
@@ -35,7 +37,11 @@ const Input = ({ type, name, placeholder, register, watch, page }: IProps) => {
           }),
         };
       case "nickname":
-        return { ...register("nickname", { required: true }) };
+        return { ...register("nickname", { 
+          required: true,
+          setValueAs: (v:string) => v.trim(),
+          onBlur: (e:any) => e.currentTarget.value = e.currentTarget.value.trim()
+        }) };
     }
   };
 

@@ -1,10 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, Router, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import App from "@/App";
+import { Toaster } from "react-hot-toast";
 
 const BlogListScreen = lazy(() => import("./routes/home/components/BlogList"));
 const CreateBlogScreen = lazy(() => import("./routes/home/components/CreateBlog"));
@@ -62,5 +63,15 @@ const router = createBrowserRouter([
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <>
+    <RouterProvider router={router} />
+    <Toaster
+    containerStyle={{
+      top: 20,
+    }}
+    toastOptions={{
+      duration: 2000,
+    }}
+  />
+  </>
 );

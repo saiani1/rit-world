@@ -8,9 +8,7 @@ import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
 import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
 import {
-  checkDuplicateIdAPI,
-  checkDuplicateNicknameAPI,
-  signUpAPI,
+  checkDuplicateIdAPI, checkDuplicateNicknameAPI, submitAPI,
 } from "@/services/user";
 
 const SignUpScreen = () => {
@@ -30,11 +28,11 @@ const SignUpScreen = () => {
     console.log(getValues());
     if (Object.values(checkedDuplicate).every((v) => v === true) === true) {
       const data = getValues();
-      signUpAPI(data)
+      submitAPI(data)
         .then((res) => {
           console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => toast.error(err.msg));
     } else {
       toast.error("중복확인 검사를 완료해주세요.");
     }
@@ -51,8 +49,8 @@ const SignUpScreen = () => {
     ) {
       const email = getValues("userId");
       checkDuplicateIdAPI(email)
-        .then((res) => {
-          if (res.data.isDuplicate === true) {
+        .then(res => {
+          if (res) {
             toast.error("사용할 수 없는 아이디입니다.");
             setCheckedDuplicate({ ...checkedDuplicate, email: false });
           } else {
@@ -65,7 +63,7 @@ const SignUpScreen = () => {
       const nickname = getValues("nickname");
       checkDuplicateNicknameAPI(nickname)
         .then((res) => {
-          if (res.data.isDuplicate === true) {
+          if (res) {
             toast.error("사용할 수 없는 닉네임입니다.");
             setCheckedDuplicate({ ...checkedDuplicate, nickname: false });
           } else {
@@ -84,11 +82,11 @@ const SignUpScreen = () => {
         className={styles["form-wrap"]}
         noValidate
       >
-        <div className={styles["logo-wrap"]}>
+        {/* <div className={styles["logo-wrap"]}>
           <h1>
             <img src={logo} alt="logo" className="w-[160px]" />
           </h1>
-        </div>
+        </div> */}
         <div className="flex flex-col">
           <div className="mb-2">
             <motion.div
