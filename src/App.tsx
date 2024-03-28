@@ -21,9 +21,16 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) setIsLogin(true);
-      else setIsLogin(false)
+      if (isLogin) {
+        try {
+          const {data : {user}, error } = await supabase.auth.getUser();
+          if (error) throw error;
+          setIsLogin(!!user);
+        } catch (error) {
+          console.error("사용자 정보 조회 중 에러 발생", error);
+          setIsLogin(false);
+        }
+      }
     })();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

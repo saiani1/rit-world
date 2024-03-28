@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
 import logo from "@/assets/logo.png";
+import { logOutAPI } from "@/services/user";
+import { useAtom } from "jotai";
+import { loginAtom } from "@/store/user";
+import toast from "react-hot-toast";
 
 const GNB_ARR = [
   {
@@ -20,17 +23,17 @@ const GNB_ARR = [
 
 const Header = () => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/list");
-  }
+  const [isLogin, setIsLogin] = useAtom(loginAtom);
+  const handleClick = () => navigate("/list");
 
   const handleClickHeader = (e: React.MouseEvent<HTMLUListElement>) => {
     const name = (e.target as HTMLButtonElement).name;
     if (name === "LOG OUT") {
-      Cookies.remove('login');
-      console.log("로그아웃되었습니다.")
-    }
-
+      logOutAPI().then(() => {
+        toast.success("로그아웃 되었습니다.")
+        setIsLogin(false);
+      });
+    } else if (name === "LOG IN") navigate("/signin");
   }
 
   return (
@@ -50,9 +53,9 @@ const Header = () => {
                 <button
                   type="button"
                   className="text-[17px] text-[#777] font-semibold"
-                  name={gnb.title}
+                  name={gnb.id === 1 && !isLogin ? "LOG IN" : gnb.title}
                 >
-                  {gnb.title}
+                  {gnb.id === 1 && !isLogin ? "LOG IN" : gnb.title}
                 </button>
               </li>
               ))

@@ -46,6 +46,18 @@ export const submitAPI = async (formData: ISignUpUserInfo) => {
   return data;
 }
 
+export const loginAPI = async (formData: ISignInUserInfo) => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: formData.userId,
+    password: formData.password,
+  })
+  if (error) {
+    console.error("로그인 에러", error);
+    return;
+  }
+  return data;
+}
+
 export const logOutAPI = async () => {
   const { error } = await supabase.auth.signOut();
 

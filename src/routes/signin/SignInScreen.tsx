@@ -1,13 +1,15 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { useAtom, useAtomValue } from "jotai";
 
 import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
 import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
-import { signInAPI } from "@/services/user";
+import { loginAtom } from "@/store/user";
+import { loginAPI } from "@/services/user";
 
 interface IFormData {
   userId: string;
@@ -16,6 +18,7 @@ interface IFormData {
 
 const SignInScreen = () => {
   const navigate = useNavigate();
+  const [isLogin, setIsLogin] = useAtom(loginAtom);
   const {
     register,
     handleSubmit,
@@ -23,21 +26,23 @@ const SignInScreen = () => {
     formState: { errors },
   } = useForm<IFormData>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IFormData> = () => {
-    console.log();
+  const onSubmit: SubmitHandler<IFormData> = async () => {
     if (!errors.userId && getValues().password.length !== 0) {
       const data = getValues();
-      signInAPI(data)
-        .then((res) => {
-          if (res.status === 200) {
-            Cookies.set("login", "Y", { sameSite: "strict" });
-            navigate("/home", { replace: true });
-            toast.success("로그인 했습니다.");
-          }
-        })
-        .catch((err) => console.log(err));
+      try {
+        await loginAPI(data);
+        setIsLogin(true);
+        navigate("/list", { replace: true });
+        toast.success("로그인 되었습니다.")
+      } catch (err) {
+        console.error(err);
+      }
     }
-  };
+  }
+
+  useEffect(() => {
+    if (isLogin) navigate("/list");
+  }, [])
 
   return (
     <div className="flex justify-center items-center w-full h-screen bg-slate-200">
@@ -45,9 +50,9 @@ const SignInScreen = () => {
         className="flex flex-col justify-center items-center w-96 h-96 rounded-full bg-white"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="flex justify-center w-52 mb-8">
+        {/* <h1 className="flex justify-center w-52 mb-8">
           <img src={logo} alt="logo" />
-        </h1>
+        </h1> */}
         <motion.div
           layout
           transition={{ duration: 0.2 }}
