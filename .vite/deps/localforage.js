@@ -1,7 +1,7 @@
 import {
   __commonJS,
   __require
-} from "./chunk-GFT2G5UO.js";
+} from "./chunk-BQWMX7FD.js";
 
 // .yarn/cache/localforage-npm-1.10.0-cf9ea9a436-d5c44be3a0.zip/node_modules/localforage/dist/localforage.js
 var require_localforage = __commonJS({

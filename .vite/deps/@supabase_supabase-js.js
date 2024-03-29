@@ -2,7 +2,7 @@ import {
   Headers as Headers2,
   browser_default
 } from "./chunk-6X6MRYRV.js";
-import "./chunk-GFT2G5UO.js";
+import "./chunk-BQWMX7FD.js";
 
 // .yarn/cache/@supabase-functions-js-npm-2.1.5-290ca72a57-2cd85898c7.zip/node_modules/@supabase/functions-js/dist/module/helper.js
 var resolveFetch = (customFetch) => {
@@ -10,7 +10,7 @@ var resolveFetch = (customFetch) => {
   if (customFetch) {
     _fetch = customFetch;
   } else if (typeof fetch === "undefined") {
-    _fetch = (...args) => import("./browser-GGOC22KZ.js").then(({ default: fetch2 }) => fetch2(...args));
+    _fetch = (...args) => import("./browser-TKFZKD5W.js").then(({ default: fetch2 }) => fetch2(...args));
   } else {
     _fetch = fetch;
   }
@@ -2287,7 +2287,7 @@ var RealtimeClient = class {
       if (customFetch) {
         _fetch = customFetch;
       } else if (typeof fetch === "undefined") {
-        _fetch = (...args) => import("./browser-GGOC22KZ.js").then(({ default: fetch2 }) => fetch2(...args));
+        _fetch = (...args) => import("./browser-TKFZKD5W.js").then(({ default: fetch2 }) => fetch2(...args));
       } else {
         _fetch = fetch;
       }
@@ -2350,7 +2350,7 @@ var RealtimeClient = class {
         this.conn = null;
       }
     });
-    import("./browser-PTV3OTRU.js").then(({ default: WS }) => {
+    import("./browser-GQXSQTJV.js").then(({ default: WS }) => {
       this.conn = new WS(this._endPointURL(), void 0, {
         headers: this.headers
       });
@@ -2691,7 +2691,7 @@ var resolveFetch2 = (customFetch) => {
   if (customFetch) {
     _fetch = customFetch;
   } else if (typeof fetch === "undefined") {
-    _fetch = (...args) => import("./browser-GGOC22KZ.js").then(({ default: fetch2 }) => fetch2(...args));
+    _fetch = (...args) => import("./browser-TKFZKD5W.js").then(({ default: fetch2 }) => fetch2(...args));
   } else {
     _fetch = fetch;
   }
@@ -2699,7 +2699,7 @@ var resolveFetch2 = (customFetch) => {
 };
 var resolveResponse = () => __awaiter2(void 0, void 0, void 0, function* () {
   if (typeof Response === "undefined") {
-    return (yield import("./browser-GGOC22KZ.js")).Response;
+    return (yield import("./browser-TKFZKD5W.js")).Response;
   }
   return Response;
 });
@@ -3609,7 +3609,7 @@ var resolveFetch4 = (customFetch) => {
   if (customFetch) {
     _fetch = customFetch;
   } else if (typeof fetch === "undefined") {
-    _fetch = (...args) => import("./browser-GGOC22KZ.js").then(({ default: fetch2 }) => fetch2(...args));
+    _fetch = (...args) => import("./browser-TKFZKD5W.js").then(({ default: fetch2 }) => fetch2(...args));
   } else {
     _fetch = fetch;
   }

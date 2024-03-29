@@ -1,6 +1,6 @@
 import {
   __commonJS
-} from "./chunk-GFT2G5UO.js";
+} from "./chunk-BQWMX7FD.js";
 
 // .yarn/__virtual__/ws-virtual-ade246f33b/0/cache/ws-npm-8.16.0-46943f6199-7c511c59e9.zip/node_modules/ws/browser.js
 var require_browser = __commonJS({
@@ -13,4 +13,4 @@ var require_browser = __commonJS({
   }
 });
 export default require_browser();
-//# sourceMappingURL=browser-PTV3OTRU.js.map
+//# sourceMappingURL=browser-GQXSQTJV.js.map

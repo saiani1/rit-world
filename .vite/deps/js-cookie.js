@@ -1,4 +1,4 @@
-import "./chunk-GFT2G5UO.js";
+import "./chunk-BQWMX7FD.js";
 
 // .yarn/cache/js-cookie-npm-3.0.5-8fc8fcc9b4-366494b163.zip/node_modules/js-cookie/dist/js.cookie.mjs
 function assign(target) {
