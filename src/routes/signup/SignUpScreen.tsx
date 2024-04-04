@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 
-import styles from "./signupScreen.module.css";
 import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
 import ErrorMsg from "@/components/common/errorMsg/ErrorMsg";
@@ -79,14 +78,14 @@ const SignUpScreen = () => {
     <div className="flex justify-center items-center w-full h-screen bg-slate-200">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className={styles["form-wrap"]}
+        className="relative flex flex-col w-[400px] h-[550px] px-[50px] py-[60px] bg-white rounded-3xl"
         noValidate
       >
-        {/* <div className={styles["logo-wrap"]}>
+        <div className="flex flex-col justify-center items-center mt-[70px] mb-[60px]">
           <h1>
             <img src={logo} alt="logo" className="w-[160px]" />
           </h1>
-        </div> */}
+        </div>
         <div className="flex flex-col">
           <div className="mb-2">
             <motion.div
@@ -102,7 +101,7 @@ const SignUpScreen = () => {
               />
               <button
                 type="button"
-                className={styles["duplicate-btn"]}
+                className="w-28 py-1.5 bg-gray-500 text-white text-[13px] rounded-full"
                 onClick={handleClickCheckDuplicate}
                 name="userId"
               >
@@ -150,7 +149,7 @@ const SignUpScreen = () => {
             />
             <button
               type="button"
-              className={styles["duplicate-btn"]}
+              className="w-28 py-1.5 bg-gray-500 text-white text-[13px] rounded-full"
               name="nickname"
               onClick={handleClickCheckDuplicate}
             >
@@ -158,11 +157,11 @@ const SignUpScreen = () => {
             </button>
           </motion.div>
         </div>
-        <div className={styles["btn-wrap"]}>
-          <button type="reset" className={styles["reset-btn"]}>
+        <div className="absolute bottom-[60px] right-[50px] left-[50px] flex gap-x-4">
+          <button type="reset" className="w-64 py-1.5 mt-5 text-gray-700 bg-white rounded-full border border-slate-300">
             취소
           </button>
-          <button type="submit" className={styles["submit-btn"]}>
+          <button type="submit" className="w-64 py-1.5 mt-5 bg-gray-700 text-white rounded-full">
             제출
           </button>
         </div>

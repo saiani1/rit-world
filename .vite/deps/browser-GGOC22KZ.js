@@ -5,7 +5,7 @@ import {
   browser_default,
   fetch
 } from "./chunk-6X6MRYRV.js";
-import "./chunk-BQWMX7FD.js";
+import "./chunk-GFT2G5UO.js";
 export {
   Headers,
   Request,
@@ -13,4 +13,4 @@ export {
   browser_default as default,
   fetch
 };
-//# sourceMappingURL=browser-TKFZKD5W.js.map
+//# sourceMappingURL=browser-GGOC22KZ.js.map

@@ -11,40 +11,39 @@ import Tree, {
 } from "@atlaskit/tree";
 
 import { treeData } from "./constants";
-import { IoIosArrowDown } from "react-icons/io";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { GoDotFill } from "react-icons/go";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { RiArrowDropRightLine } from "react-icons/ri";
+import { FaGear } from "react-icons/fa6";
+import { BiSolidRightArrow } from "react-icons/bi";
 
 const GNB = () => {
   const [tree, setTree] = useState<TreeData>(treeData);
+  const [isDNDMode, setIsDNDMode] = useState(false);
 
   const getIcon = (
     item: TreeItem,
-    onExpand: (itemId: ItemId) => void,
     onCollapse: (itemId: ItemId) => void
   ) => {
     if (item.children && item.children.length > 0) {
-      return item.isExpanded ? (
+      return item.isExpanded &&
         <button
           type="button"
+          className="flex mr-[10px]"
           onClick={() => onCollapse(item.id)}
         >
-          <IoIosArrowDown
+          <IoDocumentTextOutline
+            stroke="#888"
             onClick={() => onCollapse(item.id)}
           />
         </button>
-      ) : (
-        <button
-          type="button"
-          onClick={() => onExpand(item.id)}
-        >
-          <MdKeyboardArrowRight
-            onClick={() => onExpand(item.id)}
-           />
-        </button>
-      );
     }
-    return <GoDotFill />;
+    return (
+      <BiSolidRightArrow
+        size={9}
+        fill="#aaa"
+        className="ml-[-20px]"
+      />
+    )
   }
 
   const onExpand = (itemId: ItemId) => {
@@ -66,7 +65,6 @@ const GNB = () => {
   const renderItem = ({
     item,
     onExpand,
-    onCollapse,
     provided,
   }: RenderItemParams) => {
     return (
@@ -74,28 +72,36 @@ const GNB = () => {
         ref={provided.innerRef}
         {...provided.draggableProps}
         {...provided.dragHandleProps}
-        className="flex items-center"
+        className="flex items-center font-semibold text-[#777]"
       >
-        <span>{getIcon(item, onExpand, onCollapse)}</span>
+        <span className="mr-[-3px]">{getIcon(item, onExpand)}</span>
         <span>{item.data ? item.data.title : ''}</span>
       </div>
     )
   }
 
+  const handleClickDNDMode = () => setIsDNDMode((prev) => !prev);
+
   return (
     <nav className="mt-[10px] py-[25px] px-[30px] w-[280px] h-[450px] bg-white rounded-xl">
-      <h2 className="mb-[30px] text-[#888] font-medium text-[11px]">Category</h2>
-      <ul>
-        <Tree
-          tree={tree}
-          renderItem={renderItem}
-          onExpand={onExpand}
-          onCollapse={onCollapse}
-          onDragEnd={onDragEnd}
-          isDragEnabled
-          isNestingEnabled
-         />
-      </ul>
+      <div className="flex justify-between items-center mb-[30px]">
+        <h2 className="text-[#888] font-medium text-[11px]">Category</h2>
+        <button
+          type="button"
+          onClick={handleClickDNDMode}
+        >
+          <FaGear size={15} fill="#888" />
+        </button>
+      </div>
+      <Tree
+        tree={tree}
+        renderItem={renderItem}
+        onExpand={onExpand}
+        onCollapse={onCollapse}
+        onDragEnd={onDragEnd}
+        isDragEnabled
+        isNestingEnabled
+        />
     </nav>
   );
 };
