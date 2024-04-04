@@ -11,40 +11,52 @@ import Tree, {
 } from "@atlaskit/tree";
 
 import { treeData } from "./constants";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { RiArrowDropRightLine } from "react-icons/ri";
 import { FaGear } from "react-icons/fa6";
 import { BiSolidRightArrow } from "react-icons/bi";
+import { LuBook, LuBookOpen } from "react-icons/lu";
 
 const GNB = () => {
   const [tree, setTree] = useState<TreeData>(treeData);
   const [isDNDMode, setIsDNDMode] = useState(false);
+  const isDirectChildOfRoot = (item: TreeItem) => tree.items[tree.rootId].children.includes(item.id);
 
   const getIcon = (
     item: TreeItem,
+    onExpand: (itemId: ItemId) => void,
     onCollapse: (itemId: ItemId) => void
   ) => {
+
     if (item.children && item.children.length > 0) {
-      return item.isExpanded &&
-        <button
-          type="button"
+      return item.isExpanded ? (
+        <div
           className="flex mr-[10px]"
           onClick={() => onCollapse(item.id)}
         >
-          <IoDocumentTextOutline
+          <LuBookOpen
             stroke="#888"
             onClick={() => onCollapse(item.id)}
           />
-        </button>
-    }
+        </div>
+      ) : (
+        <div
+          className="flex mr-[10px]"
+          onClick={() => onExpand(item.id)}
+        >
+          <LuBook
+            stroke="#888"
+            onClick={() => onExpand(item.id)}
+          />
+        </div>
+      )}
     return (
       <BiSolidRightArrow
         size={9}
         fill="#aaa"
-        className="ml-[-20px]"
+        className="mr-[10px]"
       />
     )
   }
+  console.log("tree", tree);
 
   const onExpand = (itemId: ItemId) => {
     const transformTree = mutateTree(tree, itemId, { isExpanded: true });
@@ -65,6 +77,7 @@ const GNB = () => {
   const renderItem = ({
     item,
     onExpand,
+    onCollapse,
     provided,
   }: RenderItemParams) => {
     return (
@@ -74,7 +87,7 @@ const GNB = () => {
         {...provided.dragHandleProps}
         className="flex items-center font-semibold text-[#777]"
       >
-        <span className="mr-[-3px]">{getIcon(item, onExpand)}</span>
+        <span className="mr-[-3px]">{getIcon(item, onExpand, onCollapse)}</span>
         <span>{item.data ? item.data.title : ''}</span>
       </div>
     )
@@ -83,7 +96,7 @@ const GNB = () => {
   const handleClickDNDMode = () => setIsDNDMode((prev) => !prev);
 
   return (
-    <nav className="mt-[10px] py-[25px] px-[30px] w-[280px] h-[450px] bg-white rounded-xl">
+    <nav className="mt-[10px] py-[25px] px-[30px] w-[280px] h-[450px] overflow-auto bg-white rounded-xl">
       <div className="flex justify-between items-center mb-[30px]">
         <h2 className="text-[#888] font-medium text-[11px]">Category</h2>
         <button
@@ -99,9 +112,8 @@ const GNB = () => {
         onExpand={onExpand}
         onCollapse={onCollapse}
         onDragEnd={onDragEnd}
-        isDragEnabled
-        isNestingEnabled
-        />
+        isDragEnabled={isDNDMode}
+      />
     </nav>
   );
 };
