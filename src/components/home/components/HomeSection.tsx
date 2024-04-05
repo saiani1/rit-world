@@ -1,4 +1,3 @@
-import Header from "@/components/common/header/Header";
 import UpdateCategory from "./UpdateCategory";
 import CategoryList from "./CategoryList";
 

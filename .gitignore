@@ -1,12 +1,3 @@
-.env
-.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-
 # Logs
 logs
 *.log
@@ -31,3 +22,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.env
+
+# yarn v2 zeroinstall
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# vite cache
+.vite/*
+
+# build
+build/*

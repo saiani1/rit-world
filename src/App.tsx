@@ -17,7 +17,6 @@ localforage.config({
 
 const App = () => {
   const [isLogin, setIsLogin] = useAtom(loginAtom);
-  console.log("isLogin", isLogin);
 
   useEffect(() => {
     (async () => {
@@ -36,7 +35,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-200">
+    <div className="flex justify-center items-center h-full bg-slate-200">
       <div className="flex flex-col items-center w-full h-full">
         {/* <Header /> */}
         <div className="flex justify-between w-[1280px] mt-[10px] mb-[40px] gap-x-[10px]">
@@ -44,9 +43,9 @@ const App = () => {
             {/* <ProfileAside /> */}
             <GNB />
           </div>
-          {/* <div className="w-full h-screen px-[50px] py-[40px] bg-white rounded-xl overflow-scroll">
+          <div className="w-full h-screen px-[50px] py-[40px] bg-white rounded-xl overflow-auto">
             <Outlet />
-          </div> */}
+          </div>
         </div>
       </div>
       <Toaster

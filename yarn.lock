@@ -1144,6 +1144,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinymce/tinymce-react@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@tinymce/tinymce-react@npm:5.0.1"
+  dependencies:
+    prop-types: "npm:^15.6.2"
+    tinymce: "npm:^7.0.0 || ^6.0.0 || ^5.5.1"
+  peerDependencies:
+    react: ^18.0.0 || ^17.0.1 || ^16.7.0
+    react-dom: ^18.0.0 || ^17.0.1 || ^16.7.0
+  checksum: 10/26ec9a67f684bc51e2305ef8bb88dd7a04db98eed7720fbed61ccaa6d8a430bc8afa6dfed7520dd41551bc164ad741b0e261c563620993d7a942ada35638ad05
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.20.4":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -4409,6 +4422,7 @@ __metadata:
     "@supabase/supabase-js": "npm:^2.40.0"
     "@tanstack/query-core": "npm:^5.13.4"
     "@tanstack/react-query": "npm:^5.13.4"
+    "@tinymce/tinymce-react": "npm:^5.0.1"
     "@types/js-cookie": "npm:^3.0.6"
     "@types/react": "npm:^18.2.37"
     "@types/react-beautiful-dnd": "npm:^13.1.7"
@@ -4928,6 +4942,13 @@ __metadata:
   version: 6.8.1
   resolution: "tinymce@npm:6.8.1"
   checksum: 10/d21239d36fd24f3440a0f8322cdfdc1d9e37adb5e1b40abd8530c180cbf8b8cfea6ac5cf4c37090f3cb37cd32056fb433c0a50583f17b499cda06b5241fc30c5
+  languageName: node
+  linkType: hard
+
+"tinymce@npm:^7.0.0 || ^6.0.0 || ^5.5.1":
+  version: 7.0.0
+  resolution: "tinymce@npm:7.0.0"
+  checksum: 10/344b5e555692a4221e3e8f9cc3d6f222227ab54913bc6fadc349ba21dc5b0ceda699404a91565ac23ad832020fbfb9e43b26da52c2548c4f166eeca424c38505
   languageName: node
   linkType: hard
 

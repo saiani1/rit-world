@@ -14,6 +14,7 @@ import { treeData } from "./constants";
 import { FaGear } from "react-icons/fa6";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { LuBook, LuBookOpen } from "react-icons/lu";
+import { FaCircleCheck } from "react-icons/fa6";
 
 const GNB = () => {
   const [tree, setTree] = useState<TreeData>(treeData);
@@ -26,7 +27,7 @@ const GNB = () => {
     onCollapse: (itemId: ItemId) => void
   ) => {
 
-    if (item.children && item.children.length > 0) {
+    if ((item.children && item.children.length > 0) || isDirectChildOfRoot(item)) {
       return item.isExpanded ? (
         <div
           className="flex mr-[10px]"
@@ -56,7 +57,6 @@ const GNB = () => {
       />
     )
   }
-  console.log("tree", tree);
 
   const onExpand = (itemId: ItemId) => {
     const transformTree = mutateTree(tree, itemId, { isExpanded: true });
@@ -103,7 +103,11 @@ const GNB = () => {
           type="button"
           onClick={handleClickDNDMode}
         >
-          <FaGear size={15} fill="#888" />
+          {isDNDMode ? (
+            <FaCircleCheck size={15} fill="#888" />
+          ) : (
+            <FaGear size={15} fill="#888" />
+          )}
         </button>
       </div>
       <Tree
