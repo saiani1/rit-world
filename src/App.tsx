@@ -43,7 +43,7 @@ const App = () => {
             {/* <ProfileAside /> */}
             <GNB />
           </div>
-          <div className="w-full h-screen px-[50px] py-[40px] bg-white rounded-xl overflow-auto">
+          <div className="w-full h-screen px-[50px] py-[40px] bg-white rounded-xl overflow-y-scroll">
             <Outlet />
           </div>
         </div>
