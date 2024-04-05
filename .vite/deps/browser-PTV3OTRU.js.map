@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../.yarn/__virtual__/ws-virtual-ade246f33b/0/cache/ws-npm-8.16.0-46943f6199-7c511c59e9.zip/node_modules/ws/browser.js"],
-  "sourcesContent": ["'use strict';\n\nmodule.exports = function () {\n  throw new Error(\n    'ws does not work in the browser. Browser clients must use the native ' +\n      'WebSocket object'\n  );\n};\n"],
-  "mappings": ";;;;;AAAA;AAAA;AAEA,WAAO,UAAU,WAAY;AAC3B,YAAM,IAAI;AAAA,QACR;AAAA,MAEF;AAAA,IACF;AAAA;AAAA;",
-  "names": []
-}
