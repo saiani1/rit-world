@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
@@ -11,6 +12,7 @@ import {
 } from "@/services/user";
 
 const SignUpScreen = () => {
+  const navigate = useNavigate();
   const [checkedDuplicate, setCheckedDuplicate] = useState({
     email: false,
     nickname: false,
@@ -23,21 +25,21 @@ const SignUpScreen = () => {
     formState: { errors },
   } = useForm<ISignUpUserInfo>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<ISignUpUserInfo> = () => {
-    console.log(getValues());
+  const onSubmit: SubmitHandler<ISignUpUserInfo> = async () => {
     if (Object.values(checkedDuplicate).every((v) => v === true) === true) {
       const data = getValues();
-      submitAPI(data)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => toast.error(err.msg));
+      try {
+        await submitAPI(data);
+        navigate("list");
+      } catch (err) {
+        console.error(err);
+      }
     } else {
       toast.error("중복확인 검사를 완료해주세요.");
     }
   };
 
-  const handleClickCheckDuplicate = (
+  const handleClickCheckDuplicate = async (
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
     const name = (e.target as HTMLButtonElement).name;
@@ -47,30 +49,32 @@ const SignUpScreen = () => {
       errors.userId?.message === undefined
     ) {
       const email = getValues("userId");
-      checkDuplicateIdAPI(email)
-        .then(res => {
-          if (res) {
-            toast.error("사용할 수 없는 아이디입니다.");
-            setCheckedDuplicate({ ...checkedDuplicate, email: false });
-          } else {
-            toast.success("사용할 수 있는 아이디입니다.");
-            setCheckedDuplicate({ ...checkedDuplicate, email: true });
-          }
-        })
-        .catch((err) => console.log(err));
+      try {
+        const res = checkDuplicateIdAPI(email)
+        if (!res) {
+          toast.success("사용할 수 있는 아이디입니다.");
+          setCheckedDuplicate({ ...checkedDuplicate, email: true });
+        } else {
+          toast.error("사용할 수 없는 아이디입니다.");
+          setCheckedDuplicate({ ...checkedDuplicate, email: false });
+        }
+      } catch (err) {
+        console.error(err);
+      }
     } else if (name === "nickname" && getValues("nickname").length !== 0) {
       const nickname = getValues("nickname");
-      checkDuplicateNicknameAPI(nickname)
-        .then((res) => {
-          if (res) {
-            toast.error("사용할 수 없는 닉네임입니다.");
-            setCheckedDuplicate({ ...checkedDuplicate, nickname: false });
-          } else {
-            toast.success("사용할 수 있는 닉네임입니다.");
-            setCheckedDuplicate({ ...checkedDuplicate, nickname: true });
-          }
-        })
-        .catch((err) => console.log(err));
+      try {
+        const res = await checkDuplicateNicknameAPI(nickname);
+        if (!res) {
+          toast.success("사용할 수 있는 닉네임입니다.");
+          setCheckedDuplicate({ ...checkedDuplicate, nickname: true });
+        } else {
+          toast.error("사용할 수 없는 닉네임입니다.");
+          setCheckedDuplicate({ ...checkedDuplicate, nickname: false });
+        }
+      } catch (err) {
+        console.error(err);
+      }
     } else return;
   };
 

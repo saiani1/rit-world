@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 
 import logo from "@/assets/logo.png";
 import Input from "@/components/common/input/Input";
