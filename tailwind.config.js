@@ -5,6 +5,10 @@ export default {
     extend: {
       boxShadow: {
         profileShadow: "2px 2px 4px rgba(0, 0, 0, 0.15)"
+      },
+      lineClamp: {
+        2: "2",
+        3: "3",
       }
     },
   },

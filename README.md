@@ -15,7 +15,7 @@
 - [x] react-hook-form: form을 효과적으로 관리할 수 있게 해주는 라이브러리
 - [ ] react-pdf: 화면을 pdf로 변환할 때 사용하는 라이브러리
 - [ ] i18next: 다국어 처리
-- [ ] tinymce: 텍스트 에디터
+- [x] tinymce: 텍스트 에디터
 - [ ] localforage: IndexedDB, WebSQL, localStorage 등을 사용하여 데이터를 저장하는 라이브러리
 - [ ] dompurify: XSS공격 방지
 - [ ] js-cookie: 쿠키 처리를 위한 라이브러리
