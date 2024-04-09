@@ -1,22 +1,23 @@
 // import profileImage from "../../../assets/aibao.jpg";
 import { useNavigate } from "react-router-dom";
 
-import { BlogItem } from "shared/index";
+import { BlogItem, ContentTitle } from "shared/index";
+import { Button } from "shared/ui/Button";
 
 export const BlogListScreen = () => {
   const navigate = useNavigate();
 
+  const handleClickCreateBlogBtn = () => navigate("/create");
+
   return (
     <div>
       <div className="flex justify-between pb-[15px] mb-[10px] border-b border-b-[#ddd]">
-        <h2 className="text-[22px] text-[#444] font-semibold">전체</h2>
-        <button
+        <ContentTitle title="전체" />
+        <Button
           type="button"
-          className="px-[15px] py-[5px] text-[#777] border border-[#ddd] rounded-[5px]"
-          onClick={() => navigate("/create")}
-        >
-          글쓰기
-        </button>
+          content="글쓰기"
+          onclick={handleClickCreateBlogBtn}
+        />
       </div>
       <ul className="flex flex-wrap justify-between gap-[15px]">
         <BlogItem />

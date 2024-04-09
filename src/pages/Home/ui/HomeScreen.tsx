@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { useAtom } from "jotai";
 import localforage from "localforage";
 
-import { ProfileAside } from "widgets/profile";
+import { ProfileAside } from "features/Profile";
 import { Header } from "features/Header";
 import { Category } from "features/Category";
 import { supabase } from "shared/api/supabase";
