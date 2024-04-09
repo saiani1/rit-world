@@ -2,15 +2,14 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
-const HomeScreen = lazy(() => import("../pages/HomeScreen"))
-const BlogListScreen = lazy(() => import("../pages/BlogListScreen"));
-const CreateBlogScreen = lazy(() => import("../pages/CreateBlogScreen"));
-const SignInScreen = lazy(() => import("../pages/SignInScreen"));
-const SignUpScreen = lazy(() => import("../pages/SignUpScreen"));
+const HomeScreen = lazy(() => import("pages/Home/ui/HomeScreen").then(({ HomeScreen }) => ({ default: HomeScreen })));
+const BlogListScreen = lazy(() => import("pages/BlogList/ui/BlogListScreen").then(({ BlogListScreen }) => ({ default: BlogListScreen })));
+const CreateBlogScreen = lazy(() => import("pages/CreateBlog/ui/CreateBlogScreen").then(({ CreateBlogScreen }) => ({ default: CreateBlogScreen })));
+const SignInScreen = lazy(() => import("pages/SignIn/ui/SignInScreen").then(({ SignInScreen }) => ({ default: SignInScreen })));
+const SignUpScreen = lazy(() => import("pages/SignUp/ui/SignUpScreen").then(({ SignUpScreen }) => ({ default: SignUpScreen })));
 
 export const router = createBrowserRouter([
   {
-    path: "/",
     element: <HomeScreen />,
     // loader: titleLoader,
     children: [
@@ -18,7 +17,7 @@ export const router = createBrowserRouter([
         element: <Outlet />,
         children: [
           {
-            path: "/list",
+            path: "/",
             element:
               <Suspense>
                 <BlogListScreen />

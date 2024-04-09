@@ -1,6 +1,6 @@
 type ItemId = string;
 
-interface TreeItem {
+type TreeItem = {
   id: ItemId;
   children: ItemId[];
   hasChildren: boolean;
@@ -10,7 +10,7 @@ interface TreeItem {
   };
 }
 
-export interface TreeDataType {
+export type TreeDataType = {
   rootId: ItemId;
   items: {
     [key: string]: TreeItem;
