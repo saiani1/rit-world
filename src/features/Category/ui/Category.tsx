@@ -116,6 +116,7 @@ export const Category = () => {
         onCollapse={onCollapse}
         onDragEnd={onDragEnd}
         isDragEnabled={isDNDMode}
+        isNestingEnabled
       />
     </nav>
   );

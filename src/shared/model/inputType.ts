@@ -1,8 +1,11 @@
 export type InputType = {
   type: string;
-  name: string;
   placeholder: string;
   register: any;
-  watch?: any;
   page?: string;
+}
+
+export type optionType = {
+  value: string,
+  name: string,
 }

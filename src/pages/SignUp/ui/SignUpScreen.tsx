@@ -98,10 +98,18 @@ export const SignUpScreen = () => {
             >
               <RegisterInput
                 type="email"
-                name="userId"
+                page="signup"
                 placeholder="이메일"
-                register={register}
-              />
+                register={register("userId", {
+                  required: true,
+                  pattern: {
+                    value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                    message: "이메일 형식에 맞지 않습니다.",
+                  },
+                  setValueAs: (v:string) => v.trim(),
+                  onBlur: (e:any) => e.currentTarget.value = e.currentTarget.value.trim()
+                })}
+                  />
               <button
                 type="button"
                 className="w-28 py-1.5 bg-gray-500 text-white text-[13px] rounded-full"
@@ -123,16 +131,22 @@ export const SignUpScreen = () => {
             >
               <RegisterInput
                 type="password"
-                name="password"
+                page="signup"
                 placeholder="비밀번호"
-                register={register}
-              />
+                register={register("password", {required: true })}
+                />
               <RegisterInput
                 type="password"
-                name="confirm_password"
+                page="signup"
                 placeholder="비밀번호 확인"
-                register={register}
-                watch={watch}
+                register={register("confirm_password", {
+                  required: true,
+                  validate: (val: string) => {
+                    if (watch("password") !== val) {
+                      return "비밀번호가 일치하지 않습니다.";
+                    }
+                  },
+                })}
               />
             </motion.div>
             {errors.confirm_password?.message && (
@@ -146,9 +160,13 @@ export const SignUpScreen = () => {
           >
             <RegisterInput
               type="text"
-              name="nickname"
+              page="signup"
               placeholder="닉네임"
-              register={register}
+              register={register("nickname", {
+                required: true,
+                setValueAs: (v:string) => v.trim(),
+                onBlur: (e:any) => e.currentTarget.value = e.currentTarget.value.trim()
+              })}
             />
             <button
               type="button"

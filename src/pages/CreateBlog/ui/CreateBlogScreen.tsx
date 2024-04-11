@@ -1,6 +1,8 @@
 import { useForm, useController } from "react-hook-form";
 import { Editor } from '@tinymce/tinymce-react';
 import { ContentTitle, RegisterInput } from "shared/index";
+import { SelectBox } from "shared/ui/Selectbox";
+import { CATEGORY_OPTIONS_ARR } from "../lib/constants";
 
 type formData = {
   subject: string,
@@ -32,18 +34,19 @@ export const CreateBlogScreen = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex justify-between pb-[15px] mb-[10px] border-b border-b-[#ddd]">
+      <div className="flex justify-between pb-[15px] mb-[20px] border-b border-b-[#ddd]">
         <ContentTitle title="블로그 쓰기" />
       </div>
-      <RegisterInput
-        type="text"
-        name: 
-      />
-      <input
-        type="text"
-        className="flex w-full mb-[10px] px-[15px] py-[5px] border rounded-[5px]"
-        {...register("subject")}
-      />
+      <div className="flex gap-x-[10px] mb-[10px]">
+        <SelectBox
+          options={CATEGORY_OPTIONS_ARR}
+        />
+        <RegisterInput
+          type="text"
+          placeholder="제목을 입력해주세요."
+          register={register("subject")}
+        />
+      </div>
       <Editor
         {...field}
         tinymceScriptSrc={'/tinymce/tinymce.min.js'}
@@ -64,7 +67,7 @@ export const CreateBlogScreen = () => {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
-      <div className="flex justify-center items-center gap-x-[10px] mt-[10px]">
+      <div className="flex justify-center items-center gap-x-[10px] mt-[20px]">
         <button
           type="reset"
           className="px-[25px] py-[7px] text-[#777] font-medium border border-[#ddd] rounded-[3px]"

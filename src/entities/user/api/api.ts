@@ -1,4 +1,4 @@
-import { supabase } from "@/shared/api/supabase";
+import { supabase } from "shared/api/supabase";
 
 export const checkDuplicateIdAPI = async (email: string) => {
   const { error, count } = await supabase
