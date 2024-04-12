@@ -3,8 +3,11 @@ import { Editor } from '@tinymce/tinymce-react';
 import { ContentTitle, RegisterInput } from "shared/index";
 import { SelectBox } from "shared/ui/Selectbox";
 import { CATEGORY_OPTIONS_ARR } from "../lib/constants";
+import { Button } from "shared/ui/Button";
+import toast from "react-hot-toast";
 
 type formData = {
+  category: string,
   subject: string,
   content: string,
 }
@@ -12,9 +15,9 @@ type formData = {
 export const CreateBlogScreen = () => {
   const {
     getValues,
-    setValue,
     register,
     control,
+    formState: {errors},
     handleSubmit,
   } = useForm<formData>();
 
@@ -29,22 +32,34 @@ export const CreateBlogScreen = () => {
   })
 
   const onSubmit = () => {
-    console.log(getValues());
+    if (getValues("content")?.trim().length === 0 || getValues("content") === undefined) toast.error("내용을 입력해주세요.");
+    else console.log(getValues());
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex justify-between pb-[15px] mb-[20px] border-b border-b-[#ddd]">
+      {/* <div className="flex justify-between pb-[15px] mb-[20px] border-b border-b-[#ddd]">
         <ContentTitle title="블로그 쓰기" />
-      </div>
+      </div> */}
       <div className="flex gap-x-[10px] mb-[10px]">
         <SelectBox
           options={CATEGORY_OPTIONS_ARR}
+          error={!!errors.category}
+          register={register("category", {
+            required: true,
+            setValueAs: (v:string) => v.trim(),
+            onBlur: (e:any) => e.currentTarget.value = e.currentTarget.value.trim()
+          })}
         />
         <RegisterInput
           type="text"
           placeholder="제목을 입력해주세요."
-          register={register("subject")}
+          error={!!errors.subject}
+          register={register("subject", {
+            required: true,
+            setValueAs: (v:string) => v.trim(),
+            onBlur: (e:any) => e.currentTarget.value = e.currentTarget.value.trim()
+          })}
         />
       </div>
       <Editor
@@ -68,18 +83,16 @@ export const CreateBlogScreen = () => {
         }}
       />
       <div className="flex justify-center items-center gap-x-[10px] mt-[20px]">
-        <button
+        <Button
           type="reset"
-          className="px-[25px] py-[7px] text-[#777] font-medium border border-[#ddd] rounded-[3px]"
-        >
-          취소
-        </button>
-        <button
+          content="취소"
+          classname="px-[25px] py-[8px]"
+        />
+        <Button
           type="submit"
-          className="px-[25px] py-[7px] bg-[#049DD9] text-white font-medium rounded-[3px]"
-        >
-          발행
-        </button>
+          content="발행"
+          classname="primary px-[25px] py-[8px]"
+        />
       </div>
     </form>
   )

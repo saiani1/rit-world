@@ -1,14 +1,21 @@
 import { optionType } from "shared/model/inputType";
 
 export const SelectBox = ({
-  options
+  options,
+  register,
+  error,
  } : {
-  options: optionType[];
+  options: optionType[],
+  register: any,
+  error?: boolean,
  }
 ) => {
   return (
-    <div className="flex w-[20%] px-[10px] py-[3px] border border-slate-300 rounded-[5px]">
-      <select className="w-full text-[13px] active:outline-none focus:outline-none">
+    <div className={`flex px-[10px] py-[3px] ${error ? "border-[2px] border-[#F04343]" : "border border-slate-300"} rounded-[5px]`}>
+      <select
+        className="w-fit text-[13px] active:outline-none focus:outline-none"
+        {...register}
+      >
         {options.map((option: optionType, i: number) => (
           <option value={option.value} key={`options_${i}`}>
             {option.name}

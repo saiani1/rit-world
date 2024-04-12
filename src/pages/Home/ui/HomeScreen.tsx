@@ -7,8 +7,8 @@ import localforage from "localforage";
 import { ProfileAside } from "features/Profile";
 import { Header } from "features/Header";
 import { Category } from "features/Category";
-import { supabase } from "shared/api/supabase";
 import { loginAtom } from "entities/user/model/atom";
+import { isLoginAPI } from "entities/user/api/api";
 
 localforage.config({
   driver: localforage.LOCALSTORAGE,
@@ -20,19 +20,12 @@ export const HomeScreen = () => {
 
   useEffect(() => {
     (async () => {
-      if (isLogin) {
-        try {
-          const {data : {user}, error } = await supabase.auth.getUser();
-          if (error) throw error;
-          setIsLogin(!!user);
-        } catch (error) {
-          console.error("사용자 정보 조회 중 에러 발생", error);
-          setIsLogin(false);
-        }
-      }
-    })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+      const unsubscribe = await isLoginAPI(setIsLogin);
+      return () => unsubscribe;
+    });
   }, []);
+
+  console.log("isLogin", isLogin);
 
   return (
     <div className="flex justify-center items-center h-full bg-slate-200">
