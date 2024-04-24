@@ -5,6 +5,7 @@ import { MdOutlineAlternateEmail } from "react-icons/md";
 
 import ProfileImage from "shared/assets/aibao.jpg";
 import GithubIcon from "shared/assets/github.svg?react";
+import { IconButton } from "shared/index";
 
 export const ProfileAside = () => {
   return (
@@ -28,24 +29,16 @@ export const ProfileAside = () => {
         </dl>
         <ul className="flex items-center mt-[30px] gap-x-[8px]">
           <li>
-            <button type="button" aria-label="포트폴리오" title="포트폴리오">
-              <ImAttachment size={24} />
-            </button>
+            <IconButton ariaLabel="포트폴리오" title="포트폴리오" iconSize={24} Icon={ImAttachment} />
           </li>
           <li>
-            <button type="button" aria-label="이메일" title="이메일">
-              <MdOutlineAlternateEmail size={24} />
-            </button>
+            <IconButton ariaLabel="이메일" title="이메일" iconSize={24} Icon={MdOutlineAlternateEmail} />
           </li>
           <li>
-            <button type="button" aria-label="링크드인" title="링크드인">
-              <FaLinkedin size={24} />
-            </button>
+            <IconButton ariaLabel="링크드인" title="링크드인" iconSize={24} Icon={FaLinkedin} />
           </li>
           <li>
-            <button type="button" aria-label="깃허브" title="깃허브">
-              <GithubIcon className="w-[24px] fill-[#888]" />
-            </button>
+            <IconButton ariaLabel="깃허브" title="깃허브" Icon={GithubIcon} iconStyle="w-[24px] fill-[#888]" />
           </li>
         </ul>
       </div>

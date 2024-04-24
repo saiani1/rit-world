@@ -16,16 +16,14 @@ localforage.config({
 });
 
 export const HomeScreen = () => {
-  const [isLogin, setIsLogin] = useAtom(loginAtom);
+  // const [isLogin, setIsLogin] = useAtom(loginAtom);
 
-  useEffect(() => {
-    (async () => {
-      const unsubscribe = await isLoginAPI(setIsLogin);
-      return () => unsubscribe;
-    });
-  }, []);
-
-  console.log("isLogin", isLogin);
+  // useEffect(() => {
+  //   (async () => {
+  //     const unsubscribe = await isLoginAPI(setIsLogin);
+  //     return () => unsubscribe;
+  //   });
+  // }, []);
 
   return (
     <div className="flex justify-center items-center h-full bg-slate-200">
