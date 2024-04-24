@@ -1,10 +1,11 @@
-import { useForm, useController } from "react-hook-form";
-import { Editor } from '@tinymce/tinymce-react';
+import { useForm } from "react-hook-form";
 import { ContentTitle, RegisterInput } from "shared/index";
-import { SelectBox } from "shared/ui/Selectbox";
+import { SelectBox } from "shared/ui/SelectBox";
 import { CATEGORY_OPTIONS_ARR } from "../lib/constants";
-import { Button } from "shared/ui/Button";
+import { TextButton } from "shared/ui/TextButton";
 import toast from "react-hot-toast";
+import { CustomEditor } from "shared/ui/CustomEditor";
+import { supabase } from "shared/api/supabase";
 
 type formData = {
   category: string,
@@ -21,19 +22,26 @@ export const CreateBlogScreen = () => {
     handleSubmit,
   } = useForm<formData>();
 
-  const {
-    field: {
-      onChange,
-      ...field
-    },
-  } = useController({
-    name: "content",
-    control,
-  })
 
-  const onSubmit = () => {
-    if (getValues("content")?.trim().length === 0 || getValues("content") === undefined) toast.error("내용을 입력해주세요.");
-    else console.log(getValues());
+
+  const onSubmit = async () => {
+    // if (getValues("content")?.trim().length === 0 || getValues("content") === undefined) toast.error("내용을 입력해주세요.");
+    // else {
+    //   const { data, error } = await supabase
+    //     user_id: ,
+    //   .from('post')
+    //   .insert([{
+    //     subject: getValues("subject"),
+    //     content: getValues("content"),
+    //     category_id: ,
+    //   }]);
+
+    //   if (error) {
+    //     console.error('Error inserting data:', error);
+    //   } else {
+    //     console.log('Data inserted successfully:', data);
+    //   }
+    // }
   }
 
   return (
@@ -62,33 +70,14 @@ export const CreateBlogScreen = () => {
           })}
         />
       </div>
-      <Editor
-        {...field}
-        tinymceScriptSrc={'/tinymce/tinymce.min.js'}
-        onEditorChange={onChange}
-        init={{
-          height: 500,
-          menubar: false,
-          statusbar: false,
-          promotion: false,
-          plugins: [
-            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
-            'anchor', 'searchreplace', 'visualblocks', 'code',
-            'media', 'table'
-          ],
-          toolbar: ' blocks | image table ' +
-            'bold italic forecolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent | ',
-          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        }}
-      />
+      <CustomEditor control={control} />
       <div className="flex justify-center items-center gap-x-[10px] mt-[20px]">
-        <Button
+        <TextButton
           type="reset"
           content="취소"
           classname="px-[25px] py-[8px]"
         />
-        <Button
+        <TextButton
           type="submit"
           content="발행"
           classname="primary px-[25px] py-[8px]"
