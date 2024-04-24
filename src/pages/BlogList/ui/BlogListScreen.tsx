@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { BlogItem, ContentTitle } from "shared/index";
-import { Button } from "shared/ui/Button";
+import { TextButton } from "shared/ui/TextButton";
 
 export const BlogListScreen = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export const BlogListScreen = () => {
     <div>
       <div className="flex justify-between pb-[15px] mb-[10px] border-b border-b-[#ddd]">
         <ContentTitle title="전체" />
-        <Button
+        <TextButton
           type="button"
           content="글쓰기"
           onclick={handleClickCreateBlogBtn}
